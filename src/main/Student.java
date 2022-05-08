@@ -10,7 +10,7 @@ public class Student implements Comparable<Student> {
         int add =0;
         this.nom = nom;
         this.prenom = prenom;
-        if (annee.equals("3")) {
+        if (annee.equals("3")) { // Si on avais plus de 3 année on aurais pu faire un Integer.parseInteger(annee) et faire les test plus intéligement
             this.annee = 3;
             add = 10;
         } else if (annee.equals("2")) {
@@ -44,7 +44,7 @@ public class Student implements Comparable<Student> {
         return "[" + prenom + ";" + moyenne + ";" + annee + "]";
     }
 
-    public int compareTo(Student d) {
+    public int compareTo(Student d) { // Nous permet d'utiliser Collections.sort(Arraylist<Student>)
         if(d.annee == 1){
             return (int) (this.moyenne - d.moyenne);
         }else{

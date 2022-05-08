@@ -12,7 +12,7 @@ public abstract class Graph {
     public static GrapheNonOrienteValue<Student> createGraph(ArrayList<Student> tutoré, ArrayList<Student> tuteurs){
         GrapheNonOrienteValue<Student> graph = new GrapheNonOrienteValue<>();
 
-        for (int i = 0; i < tutoré.size(); i++) {   // tuteurs.size() = tutoré.size()
+        for (int i = 0; i < tutoré.size(); i++) {   // tuteurs.size() = tutoré.size() pour la partie graph
             graph.ajouterSommet(tutoré.get(i));
             graph.ajouterSommet(tuteurs.get(i));
         }
@@ -28,7 +28,7 @@ public abstract class Graph {
         return graph;
     }
 
-    public static void fillTab(ArrayList<Student> tutoré, ArrayList<Student> tuteurs){
+    public static void fillTab(ArrayList<Student> tutoré, ArrayList<Student> tuteurs){ // On rempli les listes avec comme seul critére la moyenne
         List<List<String>> res = CsvFileHelper.getCSV();
         for (int i = 0; i < res.size(); i++) {
             if (res.get(i).get(1).equals("1")) {
@@ -43,7 +43,7 @@ public abstract class Graph {
         Collections.sort(tuteurs);
     }
 
-    public static void fillTabAvecAbsence(ArrayList<Student> tutoré, ArrayList<Student> tuteurs){
+    public static void fillTabAvecAbsence(ArrayList<Student> tutoré, ArrayList<Student> tuteurs){ // On rempli les listes avec moyenne & absence pour les premiére année
         List<List<String>> res = CsvFileHelper.getCSV();
         for (int i = 0; i < res.size(); i++) {
             if (res.get(i).get(1).equals("1")) {
@@ -58,7 +58,7 @@ public abstract class Graph {
         Collections.sort(tuteurs);
     }
 
-    public static void fillTabAvecMoyPremiere(ArrayList<Student> tutoré, ArrayList<Student> tuteurs){
+    public static void fillTabAvecMoyPremiere(ArrayList<Student> tutoré, ArrayList<Student> tuteurs){ // On rempli les listes avec moyenne & moyenne premiére année pour les tuteurs
         List<List<String>> res = CsvFileHelper.getCSV();
         for (int i = 0; i < res.size(); i++) {
             if (res.get(i).get(1).equals("1")) {
@@ -73,7 +73,7 @@ public abstract class Graph {
         Collections.sort(tuteurs);
     }
 
-    public static void fixCouple(ArrayList<Student> tutoréList, ArrayList<Student> tuteurList,int tutoré, int tuteur){
+    public static void fixCouple(ArrayList<Student> tutoréList, ArrayList<Student> tuteurList,int tutoré, int tuteur){ // On fixe les couples de notre choix. On ne peux pas fixer un couple avec un étudiants qui a déjà été fixé
         if(!tuteurList.get(tuteur).fixed && !tutoréList.get(tutoré).fixed){
             tuteurList.get(tuteur).moyenne=idx;
             tuteurList.get(tuteur).fixed=true;
