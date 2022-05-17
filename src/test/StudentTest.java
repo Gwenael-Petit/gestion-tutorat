@@ -8,15 +8,15 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import main.Student;
+import main.Users.Student;
 
 public class StudentTest {
     Student s1, s2, s3;
     @BeforeEach
     public void beforeATest(){
-        s1 = new Student("Jhonson", "Maxime", "13.5", "3","12.3");
-        s2 = new Student("Leleu", "Simon", "12", "2","14.0");
-        s3 = new Student("Smith", "Arthur", "16", "1","15");
+        s1 = new Student("Jhonson", "Maxime","login","password", "13.5", "3","12.3");
+        s2 = new Student("Leleu", "Simon","login","password", "12", "2","14.0");
+        s3 = new Student("Smith", "Arthur","login","password", "16", "1","15");
     }
 
     @Test

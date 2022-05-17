@@ -9,8 +9,8 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import fr.ulille.but.sae2_02.graphes.GrapheNonOrienteValue;
-import main.Graph;
-import main.Student;
+import main.Users.Student;
+import main.Util.Graph;
 
 public class GraphTest {
     ArrayList<Student> tuteurs,tutoré;

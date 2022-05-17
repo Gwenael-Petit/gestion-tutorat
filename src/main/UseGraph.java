@@ -3,6 +3,8 @@ import java.util.ArrayList;
 
 import fr.ulille.but.sae2_02.graphes.CalculAffectation;
 import fr.ulille.but.sae2_02.graphes.GrapheNonOrienteValue;
+import main.Users.Student;
+import main.Util.Graph;
 
 public class UseGraph {
     public static void main(String[] args) {
