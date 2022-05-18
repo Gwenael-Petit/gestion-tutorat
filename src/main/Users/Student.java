@@ -62,6 +62,21 @@ public class Student extends Person implements Comparable<Student> {
         fixed=false;
     }
 
+    public Student(String nom, String prenom, String password, String moyenne, String annee) {
+        super(nom,prenom,prenom.toLowerCase()+"."+nom.toLowerCase()+".etu",password);
+        int add =0;
+        if (annee.equals("3")) { // Si on avais plus de 3 année on aurais pu faire un Integer.parseInteger(annee) et faire les test plus intéligement
+            this.LEVEL = Level.third;
+            add = 10;
+        } else if (annee.equals("2")) {
+            this.LEVEL = Level.second;
+        } else {
+            this.LEVEL = Level.first;
+        }
+        this.score = Double.parseDouble(moyenne) + add;
+        fixed=false;
+    }
+
     public Student(String nom, String prenom, String login, String password, String moyenne, String annee,String modifier) {   // Le modifier est le nombre d'absence en premiére année, dans les autres promotion c'est la moyenne de la premiére année de l'étudiant
         super(nom,prenom,login,password);
         Double add =0.0;

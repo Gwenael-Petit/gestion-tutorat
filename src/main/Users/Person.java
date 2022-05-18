@@ -13,5 +13,32 @@ public abstract class Person {
         this.login = login;
         this.password = password;
     }
-    
+
+    public String getLastName() {
+        return this.lastName;
+    }
+
+    public String getName() {
+        return this.name;
+    }
+
+    public String getLogin() {
+        return this.login;
+    }
+
+    public String getPassword() {
+        return this.password;
+    } 
+
+    public boolean connect(String login, String pwd){
+        return login.equals(this.login) && pwd.equals(this.password);
+    }
+
+    public boolean isTeacher(){
+        return this instanceof Teacher;
+    }
+
+    public boolean isStudent(){
+        return this instanceof Student;
+    }
 }

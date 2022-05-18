@@ -1,4 +1,9 @@
 package main.Util;
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -17,6 +22,21 @@ public class CsvFileHelper {
             String[] values = lines[i].split(COMMA_DELIMITER);
             records.add(Arrays.asList(values));
         }
+        return records;
+    }
+
+    public static List<List<String>> getCSV(String delimiter,String path) throws FileNotFoundException, IOException{
+        List<List<String>> records = new ArrayList<>();
+        BufferedReader br = new BufferedReader(new FileReader(path));
+        ArrayList<String> lines = new ArrayList<String>();
+        while(br.ready()){
+            lines.add(br.readLine());
+        }
+        for(int i = 0;i<lines.size();i++){
+            String[] values = lines.get(i).split(COMMA_DELIMITER);
+            records.add(Arrays.asList(values));
+        }
+        br.close();
         return records;
     }
 }

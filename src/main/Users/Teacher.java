@@ -17,4 +17,9 @@ public class Teacher extends Person {
         this.subjects = new ArrayList<Subject>();
     }
 
+    public Teacher(String lastName, String name, String password) {
+        super(lastName, name, name.toLowerCase()+"."+lastName.toLowerCase(), password);
+        this.subjects = new ArrayList<Subject>();
+    }
+
 }

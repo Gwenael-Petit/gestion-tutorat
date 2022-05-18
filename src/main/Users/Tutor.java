@@ -1,6 +1,7 @@
 package main.Users;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Map;
 
 import main.Subject;
@@ -12,5 +13,36 @@ public class Tutor extends Student{
         super(nom, prenom, login, password, moyenne, annee);
         this.tutored = tutored;
     }
+    
 
+    public Tutor(String nom, String prenom, String password, String moyenne, String annee,Map<Subject,ArrayList<Tutored>> tutored) {
+        super(nom, prenom, prenom+"."+nom, password, moyenne, annee);
+        this.tutored = tutored;
+    }
+
+    public Tutor(String nom, String prenom, String password, String moyenne, String annee) {
+        super(nom, prenom, password, moyenne, annee);
+        this.tutored = new HashMap<Subject,ArrayList<Tutored>>();
+    }
+
+    public Map<Subject, ArrayList<Tutored>> getTutored() {
+        return tutored;
+    }
+
+    public boolean addSubject(Subject s){
+        tutored.put(s, new ArrayList<Tutored>());
+        return true;
+    }
+
+    public boolean addTutored(Subject s, Tutored t){
+        if(tutored.get(s)==null){
+            return false;
+        }
+        if(t.getTutor().get(s)!=null){
+            return false;
+        }
+        tutored.get(s).add(t);
+        t.getTutor().put(s, this);
+        return true;
+    }
 }

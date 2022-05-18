@@ -1,4 +1,4 @@
-package main;
+package main.old;
 import java.util.ArrayList;
 
 import fr.ulille.but.sae2_02.graphes.CalculAffectation;
