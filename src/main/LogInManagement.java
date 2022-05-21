@@ -1,4 +1,4 @@
-package main.Util;
+package main;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -18,9 +18,16 @@ public class LogInManagement {
         this.logged =null;
     }
 
-    private Person getUserPwd(ArrayList<Person> p) throws IOException, WrongLoginException {
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+    @Override
+    public String toString() {
+        if(isLogged()){
+            return logged.toString();
+        }else{
+            return "null";
+        }
+    }
 
+    private Person getUserPwd(ArrayList<Person> p, BufferedReader br) throws IOException, WrongLoginException {
         System.out.println("Login:");
         String login = br.readLine();
         System.out.println("Mot de passe:");
@@ -35,11 +42,11 @@ public class LogInManagement {
         return res;
     }
 
-    public Person connect(ArrayList<Person> p) {
+    public Person connect(ArrayList<Person> p, BufferedReader br) {
         boolean flag = true;
         while (flag) {
             try {
-                logged = getUserPwd(p);
+                logged = getUserPwd(p,br);
                 System.out.println("Vous êtes connecté !");
                 flag = false;
             } catch(IOException e){

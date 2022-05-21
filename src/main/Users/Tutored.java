@@ -9,17 +9,17 @@ import main.Subject;
 public class Tutored extends Student{
     private Map<Subject,Tutor> tutor;    
 
-    public Tutored(String nom, String prenom, String login, String password, String moyenne, String annee,Map<Subject,Tutor> tutor) {
+    public Tutored(String nom, String prenom, String login, String password, double[] moyenne, String annee,Map<Subject,Tutor> tutor) {
         super(nom, prenom, login, password, moyenne, annee);
         this.tutor = tutor;
     }
 
-    public Tutored(String nom, String prenom, String password, String moyenne, String annee,Map<Subject,Tutor> tutor) {
+    public Tutored(String nom, String prenom, String password, double[] moyenne, String annee,Map<Subject,Tutor> tutor) {
         super(nom, prenom, password, moyenne, annee);
         this.tutor = tutor;
     }
 
-    public Tutored(String nom, String prenom, String password, String moyenne, String annee) {
+    public Tutored(String nom, String prenom, String password, double[] moyenne, String annee) {
         super(nom, prenom, password, moyenne, annee);
         this.tutor = new HashMap<Subject,Tutor>();
     }
@@ -38,5 +38,10 @@ public class Tutored extends Student{
         tutor.put(s, t);
         t.getTutored().get(s).add(this);
         return true;
+    }
+
+    @Override
+    public String toString() {
+        return super.toString();
     }
 }

@@ -14,6 +14,11 @@ public abstract class Person {
         this.password = password;
     }
 
+    public String toString() {
+        return "[Login : " + name+"."+lastName+"; PWD : "+password + "]\n";
+    }
+
+
     public String getLastName() {
         return this.lastName;
     }

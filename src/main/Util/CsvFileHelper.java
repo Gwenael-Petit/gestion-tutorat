@@ -1,14 +1,21 @@
 package main.Util;
 import java.io.BufferedReader;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.LinkedList;
 import java.util.List;
 
-public class CsvFileHelper {
+import main.Subject;
+import main.Users.Person;
+import main.Users.Student;
+import main.Users.Teacher;
+import main.Users.Tutor;
+import main.Users.Tutored;
+
+public abstract class CsvFileHelper {
     public static String COMMA_DELIMITER = ",";
 
     public static List<List<String>> getCSV(){ // Nous utilisions un fichier CSV a la base. Etant sur vscode, cela causais des soucis lors des tests
@@ -25,18 +32,57 @@ public class CsvFileHelper {
         return records;
     }
 
-    public static List<List<String>> getCSV(String delimiter,String path) throws FileNotFoundException, IOException{
+    public static List<List<String>> getCSV(String path, String delimiter) throws IOException {
         List<List<String>> records = new ArrayList<>();
-        BufferedReader br = new BufferedReader(new FileReader(path));
-        ArrayList<String> lines = new ArrayList<String>();
-        while(br.ready()){
-            lines.add(br.readLine());
+        try (BufferedReader br = new BufferedReader(new FileReader(path))) {
+            String line;
+            while ((line = br.readLine()) != null) {
+                String[] values = line.split(delimiter);
+                List<String> list = new LinkedList<>(Arrays.asList(values));
+                records.add(list);
+            }
         }
-        for(int i = 0;i<lines.size();i++){
-            String[] values = lines.get(i).split(COMMA_DELIMITER);
-            records.add(Arrays.asList(values));
-        }
-        br.close();
         return records;
+    }
+
+    public static void writeCSV(List<List<String>> res, String fileName) throws IOException {
+        FileWriter writer = new FileWriter(fileName);
+        writer.write(res.toString().replace("], ", "\n").replace("[", "").replace("]", ""));
+        writer.close();
+    }
+
+    public static ArrayList<Person> csvToList(String path, String delimiter, ArrayList<Subject> subjects) throws IOException{
+        List<List<String>> csv = getCSV(path,delimiter);
+        ArrayList<Person> res = new ArrayList<>();
+        for (int i = 0; i < csv.size(); i++) {
+            List<String> line = csv.get(i);
+            if(line.get(line.size()-1).equals("-1")){
+                ArrayList<Subject> list = new ArrayList<>();
+                int idx = 3;
+                while(idx<8){
+                    for (int j = 0; j < subjects.size(); j++) {
+                        if((subjects.get(j).getId()+"").equals(line.get(idx))){
+                            list.add(subjects.get(j));
+                        }
+                    }
+                    idx++;
+                }
+                Teacher tmp = new Teacher(line.get(1),line.get(0),line.get(0)+"."+line.get(1),line.get(2),list);
+                res.add(tmp);
+            }else{
+                Student tmp;
+                double[] tab=new double[5];
+                for (int j = 0; j < 5; j++) {
+                    tab[j] = Double.parseDouble(line.get(4+j));
+                }
+                if(line.get(line.size()-1) == "1"){
+                    tmp = new Tutored(line.get(1), line.get(0), line.get(2), tab, line.get(line.size()-1));
+                }else{
+                    tmp = new Tutor(line.get(1),line.get(0),line.get(2),tab,line.get(line.size()-1));
+                }
+                res.add(tmp);
+            }
+        }
+        return res;
     }
 }

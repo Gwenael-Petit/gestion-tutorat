@@ -6,7 +6,7 @@ import fr.ulille.but.sae2_02.graphes.GrapheNonOrienteValue;
 import main.Users.Student;
 import main.Util.Graph;
 
-public class UseGraph {
+public class UseGraph {/*
     public static void main(String[] args) {
         // On initialise nos deux listes
         ArrayList<Student> tuteurs = new ArrayList<Student>();
@@ -34,5 +34,5 @@ public class UseGraph {
         // On les affiches
         System.out.println("Affectation : \n-------------------");
         System.out.println(test.getAffectation().toString().replace("]), ", "]),\n"));
-    }
+    }*/
 }

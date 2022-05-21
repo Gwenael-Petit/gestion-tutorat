@@ -2,15 +2,16 @@ package main.Util;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.List;
 
 import fr.ulille.but.sae2_02.graphes.GrapheNonOrienteValue;
 import main.Users.Student;
+import main.Users.Tutor;
+import main.Users.Tutored;
 
 public abstract class Graph {
     private static int idx = 5000;
 
-    public static GrapheNonOrienteValue<Student> createGraph(ArrayList<Student> tutoré, ArrayList<Student> tuteurs) {
+    public static GrapheNonOrienteValue<Student> createGraph(ArrayList<Tutored> tutoré, ArrayList<Tutor> tuteurs, int subjectID) {
         GrapheNonOrienteValue<Student> graph = new GrapheNonOrienteValue<>();
 
         for (int i = 0; i < tutoré.size(); i++) { // tuteurs.size() = tutoré.size() pour la partie graph
@@ -22,78 +23,48 @@ public abstract class Graph {
         for (int i = 0; i < tuteurs.size(); i++) {
             for (int j = 0; j < tutoré.size(); j++) {
                 graph.ajouterArete(tuteurs.get(i), tutoré.get(j),
-                        (tutoré.get(j).getScore() - tuteurs.get(i).getScore()) * malus);
+                        (tutoré.get(j).getScore()[subjectID] - tuteurs.get(i).getScore()[subjectID]) * malus);
                 malus = malus - 0.02;
             }
         }
         return graph;
     }
 
-    public static void fillTab(ArrayList<Student> tutoré, ArrayList<Student> tuteurs) { // On rempli les listes avec
-                                                                                        // comme seul critére la moyenne
-        List<List<String>> res = CsvFileHelper.getCSV();
-        for (int i = 0; i < res.size(); i++) {
-            if (res.get(i).get(1).equals("1")) {
-                Student tmp = new Student("Smith", res.get(i).get(0),"login","password", res.get(i).get(2), res.get(i).get(1));
-                tutoré.add(tmp);
-            } else {
-                Student tmp = new Student("Smith", res.get(i).get(0),"login","password", res.get(i).get(2), res.get(i).get(1));
-                tuteurs.add(tmp);
-            }
+    public static void turnOnAbsence(ArrayList<Tutored> tutoré, int subjectID) { 
+        for (int i = 0; i < tutoré.size(); i++) {
+            tutoré.get(i).getScore()[subjectID]=tutoré.get(i).getScore()[subjectID]+tutoré.get(i).getModifier()*0.1;
         }
         Collections.sort(tutoré);
-        Collections.sort(tuteurs);
     }
 
-    public static void fillTabAvecAbsence(ArrayList<Student> tutoré, ArrayList<Student> tuteurs) { // On rempli les
-                                                                                                   // listes avec
-                                                                                                   // moyenne & absence
-                                                                                                   // pour les premiére
-                                                                                                   // année
-        List<List<String>> res = CsvFileHelper.getCSV();
-        for (int i = 0; i < res.size(); i++) {
-            if (res.get(i).get(1).equals("1")) {
-                Student tmp = new Student("Smith", res.get(i).get(0),"login","password", res.get(i).get(2), res.get(i).get(1),
-                        res.get(i).get(3));
-                tutoré.add(tmp);
-            } else {
-                Student tmp = new Student("Smith", res.get(i).get(0),"login","password", res.get(i).get(2), res.get(i).get(1));
-                tuteurs.add(tmp);
-            }
+    public static void turnOffAbsence(ArrayList<Tutored> tutoré, int subjectID) { 
+        for (int i = 0; i < tutoré.size(); i++) {
+            tutoré.get(i).getScore()[subjectID]=tutoré.get(i).getScore()[subjectID]-tutoré.get(i).getModifier()*0.1;
         }
         Collections.sort(tutoré);
-        Collections.sort(tuteurs);
     }
 
-    public static void fillTabAvecMoyPremiere(ArrayList<Student> tutoré, ArrayList<Student> tuteurs) { // On rempli les
-                                                                                                       // listes avec
-                                                                                                       // moyenne &
-                                                                                                       // moyenne
-                                                                                                       // premiére année
-                                                                                                       // pour les
-                                                                                                       // tuteurs
-        List<List<String>> res = CsvFileHelper.getCSV();
-        for (int i = 0; i < res.size(); i++) {
-            if (res.get(i).get(1).equals("1")) {
-                Student tmp = new Student("Smith", res.get(i).get(0),"login","password", res.get(i).get(2), res.get(i).get(1));
-                tutoré.add(tmp);
-            } else {
-                Student tmp = new Student("Smith", res.get(i).get(0),"login","password", res.get(i).get(2), res.get(i).get(1),
-                        res.get(i).get(3));
-                tuteurs.add(tmp);
-            }
+    public static void turnOnMoyPremiere(ArrayList<Tutor> tutor, int subjectID) { 
+        for (int i = 0; i < tutor.size(); i++) {
+            tutor.get(i).getScore()[subjectID]=tutor.get(i).getScore()[subjectID]+tutor.get(i).getModifier()*0.1;
         }
-        Collections.sort(tutoré);
-        Collections.sort(tuteurs);
+        Collections.sort(tutor);
     }
 
-    public static void fixCouple(ArrayList<Student> tutoréList, ArrayList<Student> tuteurList, int tutoré, int tuteur) {
+    public static void turnOffMoyPremiere(ArrayList<Tutor> tutor, int subjectID) { 
+        for (int i = 0; i < tutor.size(); i++) {
+            tutor.get(i).getScore()[subjectID]=tutor.get(i).getScore()[subjectID]-tutor.get(i).getModifier()*0.1;
+        }
+        Collections.sort(tutor);
+    }
+
+    public static void fixCouple(ArrayList<Student> tutoréList, ArrayList<Student> tuteurList, int tutoré, int tuteur, int subjectID) {
         // On fixe les couples de notre choix. On ne peux pas fixer un couple avec un étudiants qui a déjà été fixé
-        if (!tuteurList.get(tuteur).isFixed() && !tutoréList.get(tutoré).isFixed()) {
-            tuteurList.get(tuteur).setScore(idx);
-            tuteurList.get(tuteur).setFixed(true);
-            tutoréList.get(tutoré).setScore(-idx);
-            tutoréList.get(tutoré).setFixed(true);
+        if (!tuteurList.get(tuteur).getFixed()[subjectID] && !tutoréList.get(tutoré).getFixed()[subjectID]) {
+            tuteurList.get(tuteur).getScore()[subjectID] =idx;
+            tuteurList.get(tuteur).setFixed(true,subjectID);
+            tutoréList.get(tutoré).getScore()[subjectID] = idx;
+            tutoréList.get(tutoré).setFixed(true,subjectID);
             idx += 1;
             Collections.sort(tutoréList);
             Collections.sort(tuteurList);

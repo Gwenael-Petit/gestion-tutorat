@@ -22,4 +22,25 @@ public class Teacher extends Person {
         this.subjects = new ArrayList<Subject>();
     }
 
+    public String toString() {
+        return super.toString();
+    }
+
+    public void addSubjects(Subject s){
+        subjects.add(s);
+        s.setInCharge(this);
+    }
+
+    public void removeSubjects(Subject s){
+        subjects.remove(s);
+        s.setInCharge(null);
+    }
+
+    public boolean isInCharge(Subject s){
+        return subjects.contains(s);
+    }
+
+    public ArrayList<Subject> getSubjects() {
+        return subjects;
+    }
 }
