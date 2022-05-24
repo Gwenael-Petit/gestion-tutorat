@@ -35,15 +35,14 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.Slider?>
 <?import javafx.scene.control.SplitMenuButton?>
-<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TitledPane?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
-
 
 <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="470.0" prefWidth="631.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
    <children>
@@ -56,10 +55,21 @@
          <center>
             <VBox prefHeight="234.0" prefWidth="360.0" BorderPane.alignment="CENTER">
                <children>
-                  <Pane prefHeight="29.0" prefWidth="360.0" />
-                  <HBox prefHeight="36.0" prefWidth="360.0">
+                  <HBox prefHeight="43.0" prefWidth="361.0">
                      <children>
-                        <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="101.0" prefWidth="165.0" text="Critère :" HBox.hgrow="ALWAYS" />
+                        <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="32.0" prefWidth="178.0" text="Eleve : " HBox.hgrow="ALWAYS" />
+                        <SplitMenuButton mnemonicParsing="false" prefHeight="36.0" prefWidth="197.0" text="Sélectionner niveau" textAlignment="JUSTIFY">
+                           <items>
+                              <MenuItem mnemonicParsing="false" text="Action 1" />
+                              <MenuItem mnemonicParsing="false" text="Action 2" />
+                           </items>
+                        </SplitMenuButton>
+                     </children>
+                  </HBox>
+                  <Pane prefHeight="42.0" prefWidth="361.0" />
+                  <HBox prefHeight="45.0" prefWidth="361.0">
+                     <children>
+                        <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="35.0" prefWidth="171.0" text="Critère :" HBox.hgrow="ALWAYS" />
                         <SplitMenuButton mnemonicParsing="false" prefHeight="36.0" prefWidth="197.0" text="Sélectionner critère">
                           <items>
                             <MenuItem mnemonicParsing="false" text="Action 1" />
@@ -71,14 +81,23 @@
                   <Pane prefHeight="50.0" prefWidth="360.0" />
                   <HBox prefHeight="36.0" prefWidth="360.0">
                      <children>
-                        <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="37.0" prefWidth="161.0" text="Opération :" />
-                        <TextArea prefHeight="200.0" prefWidth="200.0" />
+                        <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="39.0" prefWidth="161.0" text="Opération :" />
+                        <SplitMenuButton mnemonicParsing="false" prefHeight="36.0" prefWidth="197.0" text="Sélectionner opération">
+                           <items>
+                              <MenuItem mnemonicParsing="false" text="Action 1" />
+                              <MenuItem mnemonicParsing="false" text="Action 2" />
+                           </items>
+                        </SplitMenuButton>
                      </children>
                   </HBox>
-                  <BorderPane prefHeight="119.0" prefWidth="360.0">
-                     <top>
-                        <Pane prefHeight="43.0" prefWidth="360.0" BorderPane.alignment="CENTER" />
-                     </top>
+                  <Pane prefHeight="47.0" prefWidth="361.0" />
+                  <HBox prefHeight="39.0" prefWidth="361.0">
+                     <children>
+                        <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="39.0" prefWidth="178.0" text="Valeur :" />
+                        <Slider max="20.0" prefHeight="26.0" prefWidth="198.0" showTickLabels="true" value="10.0" />
+                     </children>
+                  </HBox>
+                  <BorderPane prefHeight="74.0" prefWidth="361.0">
                      <left>
                         <Pane prefHeight="76.0" prefWidth="100.0" BorderPane.alignment="CENTER" />
                      </left>
@@ -86,11 +105,11 @@
                         <Pane prefHeight="76.0" prefWidth="81.0" BorderPane.alignment="CENTER" />
                      </right>
                      <bottom>
-                        <Pane prefHeight="30.0" prefWidth="360.0" BorderPane.alignment="CENTER" />
+                        <Pane prefHeight="30.0" prefWidth="360.0" BorderPane.alignment="CENTER">
+                           <children>
+                              <Button layoutX="149.0" layoutY="3.0" mnemonicParsing="false" text="Valider" />
+                           </children></Pane>
                      </bottom>
-                     <center>
-                        <Button mnemonicParsing="false" text="Valider" BorderPane.alignment="CENTER" />
-                     </center>
                   </BorderPane>
                </children>
             </VBox>
@@ -99,13 +118,13 @@
             <Pane prefHeight="85.0" prefWidth="631.0" BorderPane.alignment="CENTER" />
          </top>
          <right>
-            <Pane prefHeight="267.0" prefWidth="135.0" BorderPane.alignment="CENTER" />
+            <Pane prefHeight="276.0" prefWidth="161.0" BorderPane.alignment="CENTER" />
          </right>
          <bottom>
             <Pane prefHeight="84.0" prefWidth="631.0" BorderPane.alignment="CENTER" />
          </bottom>
          <left>
-            <Pane prefHeight="267.0" prefWidth="135.0" BorderPane.alignment="CENTER" />
+            <Pane prefHeight="276.0" prefWidth="160.0" BorderPane.alignment="CENTER" />
          </left>
       </BorderPane>
    </children>
