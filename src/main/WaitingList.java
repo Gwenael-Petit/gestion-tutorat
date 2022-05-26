@@ -23,18 +23,12 @@ public class WaitingList {
         this.subject=subject;
     }
 
-    public void addStudent(Tutor t){
+    public void addTutor(Tutor t){
         tutor.add(t);
     }
 
-    public void addStudent(Tutored t){
+    public void addTutored(Tutored t){
         tutored.add(t);
-    }
-
-    public void addStudent(Student t){
-        if(t instanceof Tutor)          addStudent((Tutor) t);
-        else if(t instanceof Tutored)   addStudent((Tutored) t);
-
     }
 
     public boolean contains(Tutored t){

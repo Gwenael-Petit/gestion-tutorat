@@ -75,10 +75,10 @@ public abstract class CsvFileHelper {
                 for (int j = 0; j < 5; j++) {
                     tab[j] = Double.parseDouble(line.get(4+j));
                 }
-                if(line.get(line.size()-1) == "1"){
-                    tmp = new Tutored(line.get(1), line.get(0), line.get(2), tab, line.get(line.size()-1));
+                if(line.get(3).equals("1")){
+                    tmp = new Tutored(line.get(1), line.get(0), line.get(2), tab, line.get(3));
                 }else{
-                    tmp = new Tutor(line.get(1),line.get(0),line.get(2),tab,line.get(line.size()-1));
+                    tmp = new Tutor(line.get(1),line.get(0),line.get(2),tab,line.get(3));
                 }
                 res.add(tmp);
             }

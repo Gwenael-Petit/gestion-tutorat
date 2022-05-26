@@ -119,10 +119,20 @@ public class Student extends Person implements Comparable<Student> {
     }
 
     public String toString() {
-        return "[Login : " + name+"."+lastName+".etu ; PWD : "+password+"; Score :" + score + " ; Level = " + LEVEL + "]\n";
+        String str = "[ "+score[0];
+        for (int i = 1; i < score.length; i++) {
+            str = str+", "+score[i];
+        }
+        str = str+" ]";
+        return "[Login : " + name+"."+lastName+".etu ; Score : " + str + " ; Level = " + LEVEL + "]";
     }
 
-    // TODO : ATTENTION IL FAUT CHANGER tmpSub POUR UTILISER CETTE METHODE
+    public String toString(int subjectId) {
+        return "[Login : " + name+"."+lastName+".etu ; Score : " + score[subjectId] + " ; Level = " + LEVEL + "]";
+    }
+
+
+    // Il faut au préalable changer la valeur de tmpSub pour pointer sur la bonne matiére avant d'utiliser cette methode, avec Collections.sort() par exemple.
     public int compareTo(Student d) { // Nous permet d'utiliser Collections.sort(Arraylist<Student>)
         if(d.LEVEL == Level.first){
             return (int) (this.score[tmpSub] - d.score[tmpSub]);

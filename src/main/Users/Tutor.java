@@ -6,7 +6,7 @@ import java.util.Map;
 
 import main.Subject;
 
-public class Tutor extends Student{
+public class Tutor extends Student implements Cloneable{
     private Map<Subject,ArrayList<Tutored>> tutored;    
 
     public Tutor(String nom, String prenom, String login, String password, double[] moyenne, String annee,Map<Subject,ArrayList<Tutored>> tutored) {
@@ -33,6 +33,12 @@ public class Tutor extends Student{
         return true;
     }
 
+    public Tutor clone() throws CloneNotSupportedException{
+        return (Tutor) super.clone();
+    }
+
+    /*
+
     public boolean addTutored(Subject s, Tutored t){
         if(tutored.get(s)==null){
             return false;
@@ -43,7 +49,7 @@ public class Tutor extends Student{
         tutored.get(s).add(t);
         t.getTutor().put(s, this);
         return true;
-    }
+    }*/
 
     @Override
     public String toString() {

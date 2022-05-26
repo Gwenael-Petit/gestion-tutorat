@@ -28,6 +28,8 @@ public class Tutored extends Student{
         return tutor;
     }
 
+    /*
+
     public boolean addTutor(Subject s, Tutor t){
         if(tutor.get(s)==null){
             return false;
@@ -38,7 +40,7 @@ public class Tutored extends Student{
         tutor.put(s, t);
         t.getTutored().get(s).add(this);
         return true;
-    }
+    }*/
 
     @Override
     public String toString() {
