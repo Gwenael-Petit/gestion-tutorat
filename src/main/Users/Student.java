@@ -1,14 +1,39 @@
 package main.Users;
 
+/**
+ * Un etudiant est une Person possedant des notes
+ * Il peut etre un tuteur ou un tutore
+ */
 public class Student extends Person implements Comparable<Student> {
+
+    /**
+     * Tableau de moyenne, avec une moyenne par matiere
+     */
     private double[] score;
+
+    /**
+     * Niveau de la formation en annee
+     */
     private final Level LEVEL;
+
+    /**
+     * Statut de fication de l'etudiant
+     */
     private boolean[] fixed;
+
+    /**
+     * ID de matiere, utilisee pour regarder les notes
+     */ 
     private int tmpSub;
+
+    /**
+     * Nombre d'absences pour un etudiant de 1ere annee
+     * Moyenne de la 1ere annee pour les autres
+     */
     private int modifier;
 
     /**
-     *Renvoie le nom de famille d'un étudiant
+     *Renvoie le nom de famille d'un etudiant
      *@return lastName soit le nom de famille
      */
     public String getLastName() {
@@ -16,7 +41,7 @@ public class Student extends Person implements Comparable<Student> {
     }
 
     /**
-     * Modifie le nom de famille d'un étudiant
+     * Modifie le nom de famille d'un etudiant
      * @param lastName: nouveau nom de famille
      */
     public void setLastName(String lastName) {
@@ -24,8 +49,8 @@ public class Student extends Person implements Comparable<Student> {
     }
 
     /**
-     * Renvoie le nombre d'absences pour un élèvé de 1ère année
-     * Sinon, renvoie la moyenne de première année
+     * Renvoie le nombre d'absences pour un eleve de 1ere annee
+     * Sinon, renvoie la moyenne de premiere annee
      * @return modifier: nombre d'absences ou moyenne année 1
      */
     public int getModifier() {
@@ -37,23 +62,23 @@ public class Student extends Person implements Comparable<Student> {
     }
 
     /**
-     * Renvoie le prénom d'un étudiant
-     * @return name: le prénom
+     * Renvoie le prenom d'un etudiant
+     * @return name: le prenom
      */
     public String getName() {
         return this.name;
     }
 
     /**
-     * Modifie le prénom d'un étudiant
-     * @param name: nouveau prénom
+     * Modifie le prenom d'un etudiant
+     * @param name: nouveau prenom
      */
     public void setName(String name) {
         this.name = name;
     }
 
     /**
-     * Renvoie le tableau des moyennes de l'étudiant
+     * Renvoie le tableau des moyennes de l'etudiant
      * @return score: tableau des moyennes
      */
     public double[] getScore() {
@@ -61,7 +86,7 @@ public class Student extends Person implements Comparable<Student> {
     }
 
     /**
-     * Change le tableau des moyenne de l'étudiant
+     * Change le tableau des moyenne de l'etudiant
      * @param score: nouveau tableau de moyenne
      */
     public void setScore(double[] score) {
@@ -69,24 +94,24 @@ public class Student extends Person implements Comparable<Student> {
     }
 
     /**
-     * Renvoie le niveau détude de l'étudiant en nombre d'année de formation suvie
-     * @return LEVEL: l'année d'étude
+     * Renvoie le niveau d'etude de l'etudiant en nombre d'annee de formation suivie
+     * @return LEVEL: l'annee d'etude
      */
     public Level getLevel() {
         return this.LEVEL;
     }
 
     /**
-     * Permet de savoir si un étudiant est fixé (affecté) ou non pour les différentes matières
-     * @return fixed: tableau de fixé(true) ou non(false)
+     * Permet de savoir si un etudiant est fixe (affecte) ou non pour les differentes matieres
+     * @return fixed: tableau de fixe(true) ou non(false)
      */
     public boolean[] getFixed() {
         return this.fixed;
     }
 
     /**
-     * Permet de fixer l'affectation d'un étduaint pour une matière donnée
-     * @param fixed: boolean fixé ou non
+     * Permet de fixer l'affectation d'un etudiant pour une matiere donnee
+     * @param fixed: boolean fixe ou non
      * @param subjectID: ID de la matière
      */
     public void setFixed(boolean fixed,int subjectID) {
@@ -96,16 +121,18 @@ public class Student extends Person implements Comparable<Student> {
 
 
     /**
-     * Permet de créer un étudiant grâce aux informations qui le concernent
+     * Permet de creer un etudiant grace aux informations qui le concernent
      * Utilisation du constructeur de Person
-     * On utilise l'année en chiffre pour lui atribuer l'année correspondante de l'enum Level
-     * On augemente la moyenne des 3èmes années pour les favoriser dans l'affectaion des tuteurs
-     * @param nom: nom de l'étudiant
-     * @param prenom: prénom de l'étudant
-     * @param login: identifiant de l'étudiant
-     * @param password: mot de passe de l'étudiant
-     * @param moyenne: tableau des moyennes de l'étudiant
-     * @param annee: année d'étude au sein de la formation
+     * On utilise l'annee en chiffre pour lui atribuer l'annee correspondante de l'enum Level
+     * On augemente la moyenne des 3emes annees pour les favoriser dans l'affectaion des tuteurs
+     * @param nom: nom de l'etudiant
+     * @param prenom: prenom de l'etudant
+     * @param login: identifiant de l'etudiant
+     * @param password: mot de passe de l'etudiant
+     * @param moyenne: tableau des moyennes de l'etudiant
+     * @param annee: annee d'etude au sein de la formation
+     * @see Person
+     * @see Level
      */
     public Student(String nom, String prenom,String login, String password, double[] moyenne, String annee) {
         super(nom,prenom,login,password);
@@ -130,14 +157,15 @@ public class Student extends Person implements Comparable<Student> {
 
 
     /**
-     * Permet de créer un étudiant grâce aux informations qui le concernent
+     * Permet de creer un etudiant grace aux informations qui le concernent
      * Utilisation du constructeur de Person
-     * On utilise l'année en chiffre pour lui atribuer l'année correspondante de l'enum Level
-     * On augemente la moyenne des 3èmes années pour les favoriser dans l'affectaion des tuteurs
-     * @param nom: nom de l'étudiant
-     * @param prenom: prénom de l'étudant
-     * @param moyenne: tableau des moyennes de l'étudiant
-     * @param annee: année d'étude au sein de la formation
+     * On utilise l'annee en chiffre pour lui atribuer l'annee correspondante de l'enum Level
+     * On augemente la moyenne des 3emes annees pour les favoriser dans l'affectaion des tuteurs
+     * @param nom: nom de l'etudiant
+     * @param prenom: prenom de l'etudiant
+     * @param moyenne: tableau des moyennes de l'etudiant
+     * @param annee: annee d'etude au sein de la formation
+     * @see Person
      */
     public Student(String nom, String prenom, String password, double[] moyenne, String annee) {
         super(nom,prenom,prenom.toLowerCase()+"."+nom.toLowerCase()+".etu",password);
@@ -162,17 +190,18 @@ public class Student extends Person implements Comparable<Student> {
 
 
     /**
-     * Permet de créer un étudiant grâce aux informations qui le concernent
+     * Permet de creer un etudiant grece aux informations qui le concernent
      * Utilisation du constructeur de Person
-     * On utilise l'année en chiffre pour lui atribuer l'année correspondante de l'enum Level
-     * On augemente la moyenne des 3èmes années pour les favoriser dans l'affectaion des tuteurs
-     * @param nom: nom de l'étudiant
-     * @param prenom: prénom de l'étudant
-     * @param login: identifiant de l'étudiant
-     * @param password: mot de passe de l'étudiant
-     * @param moyenne: tableau des moyennes de l'étudiant
-     * @param annee: année d'étude au sein de la formation
-     * @param modifier: nombre d'absence de lédtudiant si 1ère année sinon moyenne de 1ère année
+     * On utilise l'annee en chiffre pour lui atribuer l'annee correspondante de l'enum Level
+     * On augemente la moyenne des 3emes annees pour les favoriser dans l'affectaion des tuteurs
+     * @param nom: nom de l'etudiant
+     * @param prenom: prenom de l'etudiant
+     * @param login: identifiant de l'etudiant
+     * @param password: mot de passe de l'etudiant
+     * @param moyenne: tableau des moyennes de l'etudiant
+     * @param annee: année d'etude au sein de la formation
+     * @param modifier: nombre d'absence de l'etudiant si 1ere annee sinon moyenne de 1ere annee
+     * @see Person
      */
     public Student(String nom, String prenom, String login, String password, double[] moyenne, String annee,String modifier) {   // Le modifier est le nombre d'absence en premiére année, dans les autres promotion c'est la moyenne de la premiére année de l'étudiant
         super(nom,prenom,login,password);
@@ -198,7 +227,7 @@ public class Student extends Person implements Comparable<Student> {
     }
 
     /**
-     * Renvoie l'étudiant sous la forme [Login : prenom.nom.etu ; Score : [0, 0, 0, 0, 0] ; Level = first];
+     * Renvoie l'etudiant sous la forme [Login : prenom.nom.etu ; Score : [0, 0, 0, 0, 0] ; Level = first];
      */
     public String toString() {
         String str = "[ "+score[0];
@@ -210,8 +239,8 @@ public class Student extends Person implements Comparable<Student> {
     }
 
     /**
-     * Renvoie l'étudiant sous la forme [Login : prenom.nom.etu ; Score : 0 ; Level = first];
-     * @param subjectID: matière concernée
+     * Renvoie l'etudiant sous la forme [Login : prenom.nom.etu ; Score : 0 ; Level = first];
+     * @param subjectID: matiere concernée
      */
     public String toString(int subjectId) {
         return "[Login : " + name+"."+lastName+".etu ; Score : " + score[subjectId] + " ; Level = " + LEVEL + "]";
@@ -219,8 +248,8 @@ public class Student extends Person implements Comparable<Student> {
 
 
     /**
-     * Permet de comparer un étudiant à un autre sur plusieurs critères comme l'année ou la moyenne
-     * @return int: un entier positif si l'étudiant initial est meilleur ou sinon négatif
+     * Permet de comparer un etudiant a un autre sur plusieurs criteres comme l'annee ou la moyenne
+     * @return int: un entier positif si l'etudiant initial est meilleur ou sinon negatif
      */
     // Il faut au préalable changer la valeur de tmpSub pour pointer sur la bonne matiére avant d'utiliser cette methode, avec Collections.sort() par exemple.
     public int compareTo(Student d) { // Nous permet d'utiliser Collections.sort(Arraylist<Student>)
@@ -241,7 +270,7 @@ public class Student extends Person implements Comparable<Student> {
     }
 
     /**
-     * Permet de véridier l'aglité entre un étudiant et une instance d'Object
+     * Permet de verifier l'egalite entre un etudiant et une instance d'Object
      */
     @Override
     public boolean equals(Object obj) {
