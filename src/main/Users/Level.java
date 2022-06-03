@@ -1,9 +1,10 @@
 package main.Users;
 
 /**
- * Enum des différents niveaux qui correspondent aux années d'études pour le BUT
+ * Enum des differents niveaux qui correspondent aux annees d'etudes pour le BUT
  */
 public enum Level {
-    first,second,third;
+    /*Premiere annee , deuxieme annee, troisieme annee*/
+	first,second,third;
     
 }

@@ -5,15 +5,20 @@ import java.util.ArrayList;
 import main.Users.Student;
 import main.Users.Tutor;
 import main.Users.Tutored;
-
+/**
+ * Classe caracterisant une liste d'attente pour les etudiants qu'ils soient tuteurs ou tutores
+ */
 public class WaitingList {
+	//une matiere de type matiere
     private Subject subject;
+    //une ArrayList de tuteurs
     private ArrayList<Tutor> tutor;
+    //une ArrayListe de tutore
     private ArrayList<Tutored> tutored; 
 
     /**
-     * Crée une liste d'attente (WaitingList) pour une matière donnée en paramètre, composée d'une liste de tuteurs et d'une liste de tutorés
-     * @param subject : une matière
+     * Cree une liste d'attente (WaitingList) pour une matiere donnee en parametre, composee d'une liste de tuteurs et d'une liste de tutores
+     * @param subject : une matiere
      */
     public WaitingList(Subject subject){
         tutored = new ArrayList<>();
@@ -22,9 +27,9 @@ public class WaitingList {
     }
 
     /**
-     * Crée une liste d'attente (WaitingList) pour une matière donnée en paramètre, composée d'une liste de tuteurs et d'une liste de tutorés données en paramètres également
-     * @param subject : une matière
-     * @param tutored : une ArrayList de tutorés
+     * Cree une liste d'attente (WaitingList) pour une matiere donneee en parametre, composee d'une liste de tuteurs et d'une liste de tutores donnees en parametres egalement
+     * @param subject : une matiere
+     * @param tutored : une ArrayList de tutores
      * @param tutor : une ArrayList de tuteurs
      */
     public WaitingList(Subject subject, ArrayList<Tutored> tutored, ArrayList<Tutor> tutor){
@@ -42,7 +47,7 @@ public class WaitingList {
     }
 
     /**
-     * Ajoute un tutoré à l'ArrayList des tutorés
+     * Ajoute un tutore à l'ArrayList des tutores
      * @param t : un tutoré
      */
     public void addTutored(Tutored t){
@@ -50,16 +55,16 @@ public class WaitingList {
     }
 
     /**
-     * Vérifie si le tutoré donné en paramètre fait partie de l'ArrayList Tutored
-     * @param t : un tutoré
-     * @return true si le tutoré fait bien parti de l'ArrayList des tutorés, false sinon
+     * Verifie si le tutore donne en parametre fait partie de l'ArrayList Tutored
+     * @param t : un tutore
+     * @return true si le tutore fait bien parti de l'ArrayList des tutores, false sinon
      */
     public boolean contains(Tutored t){
         return tutored.contains(t);
     }
 
     /**
-     * Vérifie si le tuteur donné en paramètre fait partie de l'ArrayList Tutor
+     * Verifie si le tuteur donne en parametre fait partie de l'ArrayList Tutor
      * @param t : un tuteur
      * @return true si le tuteur fait bien partie de l'ArrayList des tuteurs, false sinon
      */
@@ -68,9 +73,9 @@ public class WaitingList {
     }
 
     /**
-     * Vérifie si le Student t est un tuteur ou un tutoré ou aucun des deux
-     * @param t : un étudiant (type Student)
-     * @return true si l'étudiant t est bien un tuteur ou un tutoré, false sinon
+     * Verifie si le Student t est un tuteur ou un tutore ou aucun des deux
+     * @param t : un etudiant (type Student)
+     * @return true si l'etudiant t est bien un tuteur ou un tutore, false sinon
      */
     public boolean contains(Student t){
         if(t instanceof Tutored)        return contains((Tutored) t);
@@ -79,16 +84,16 @@ public class WaitingList {
     }
 
     /**
-     * Renvoie la matière concernée par la file d'attente
-     * @return subject soit la matière en question
+     * Renvoie la matiere concernee par la file d'attente
+     * @return subject soit la matiere en question
      */
     public Subject getSubject() {
         return this.subject;
     }
 
     /**
-     * Modifie la matière de la file d'attente
-     * @param subject : une nouvelle matière
+     * Modifie la matiere de la file d'attente
+     * @param subject : une nouvelle matiere
      */
     public void setSubject(Subject subject) {
         this.subject = subject;
@@ -103,8 +108,8 @@ public class WaitingList {
     }
 
     /**
-     * Renvoie la liste des tutorés
-     * @return tutored soit l'ArrayList des tutorés en file d'attente
+     * Renvoie la liste des tutores
+     * @return tutored soit l'ArrayList des tutores en file d'attente
      */
     public ArrayList<Tutored> getTutored() {
         return this.tutored;
@@ -112,8 +117,8 @@ public class WaitingList {
 
     @Override
     /**
-     * Renvoie une chaîne de caractère composée d'une matière en file d'attente avec sa liste de tuteurs attentes et sa liste de tutorés en attentes
-     * @return res soit la chaîne de caractères en question
+     * Renvoie une chaine de caractere composee d'une matiere en file d'attente avec sa liste de tuteurs attentes et sa liste de tutores en attentes
+     * @return res soit la chaine de caracteres en question
      */
     public String toString() {
         String res = subject.toString() + "\nTuteurs :\n" +tutor.toString() + "\nTutorés :\n"+ tutored.toString();
