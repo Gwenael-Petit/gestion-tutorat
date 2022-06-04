@@ -186,7 +186,7 @@ public abstract class Graph {
             }else if (tutores.size()>tuteurs.size()){   
                 Tutor res=null;
                 for (int i = 0; i < tuteurs.size(); i++) {
-                    if(tuteurs.get(i).getLevel().equals(Level.third)){
+                    if(tuteurs.get(i).getLevel().equals(Level.THIRD)){
                         try{
                             res =  tuteurs.get(i).clone();
                         }catch(CloneNotSupportedException e){

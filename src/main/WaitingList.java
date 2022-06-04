@@ -115,7 +115,6 @@ public class WaitingList {
         return this.tutored;
     }
 
-    @Override
     /**
      * Renvoie une chaine de caractere composee d'une matiere en file d'attente avec sa liste de tuteurs attentes et sa liste de tutores en attentes
      * @return res soit la chaine de caracteres en question

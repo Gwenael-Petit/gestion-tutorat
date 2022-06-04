@@ -138,12 +138,12 @@ public class Student extends Person implements Comparable<Student> {
         super(nom,prenom,login,password);
         int add =0;
         if (annee.equals("3")) { // Si on avais plus de 3 année on aurais pu faire un Integer.parseInteger(annee) et faire les test plus intéligement
-            this.LEVEL = Level.third;
+            this.LEVEL = Level.THIRD;
             add = 10;
         } else if (annee.equals("2")) {
-            this.LEVEL = Level.second;
+            this.LEVEL = Level.SECOND;
         } else {
-            this.LEVEL = Level.first;
+            this.LEVEL = Level.FIRST;
         }
         this.score = moyenne;
         for (double d : moyenne) {
@@ -171,12 +171,12 @@ public class Student extends Person implements Comparable<Student> {
         super(nom,prenom,prenom.toLowerCase()+"."+nom.toLowerCase()+".etu",password);
         int add =0;
         if (annee.equals("3")) { // Si on avais plus de 3 année on aurais pu faire un Integer.parseInteger(annee) et faire les test plus intéligement
-            this.LEVEL = Level.third;
+            this.LEVEL = Level.THIRD;
             add = 10;
         } else if (annee.equals("2")) {
-            this.LEVEL = Level.second;
+            this.LEVEL = Level.SECOND;
         } else {
-            this.LEVEL = Level.first;
+            this.LEVEL = Level.FIRST;
         }
         this.score = moyenne;
         for (double d : moyenne) {
@@ -207,13 +207,13 @@ public class Student extends Person implements Comparable<Student> {
         super(nom,prenom,login,password);
         Double add =0.0;
         if (annee.equals("3")) {                            // Si troisiéme année on augmente artificiellement les moyenne pour prioriser l'affecation de troisiéme année
-            this.LEVEL = Level.third;
+            this.LEVEL = Level.THIRD;
             add = 10.0+Double.parseDouble(modifier)*0.1;  // J'ajoute en bonus sa moyenne de premiére année. Si il avais des bonnes notes il devrais pouvoir aider plus facilement.                                 
         } else if (annee.equals("2")) {
-            this.LEVEL = Level.second;
+            this.LEVEL = Level.SECOND;
             add=+Double.parseDouble(modifier)*0.1;
         } else {
-            this.LEVEL = Level.first;
+            this.LEVEL = Level.FIRST;
             add = add + 0.1*Double.parseDouble(modifier);   // Si premiére année on augmente artificiellement la moyenne en fonction des absence/10 pour penaliser les absences
         }
         this.score = moyenne;
@@ -253,15 +253,15 @@ public class Student extends Person implements Comparable<Student> {
      */
     // Il faut au préalable changer la valeur de tmpSub pour pointer sur la bonne matiére avant d'utiliser cette methode, avec Collections.sort() par exemple.
     public int compareTo(Student d) { // Nous permet d'utiliser Collections.sort(Arraylist<Student>)
-        if(d.LEVEL == Level.first){
+        if(d.LEVEL == Level.FIRST){
             return (int) (this.score[tmpSub] - d.score[tmpSub]);
         }else{
             if(d.score[tmpSub]>=5000 || score[tmpSub]>=5000){
                 return (int) -(this.score[tmpSub] - d.score[tmpSub]);
             }
-            if (LEVEL == Level.third && d.LEVEL != Level.third) {
+            if (LEVEL == Level.THIRD && d.LEVEL != Level.THIRD) {
                 return -1;
-            } else if (d.LEVEL == Level.third && LEVEL != Level.third) {
+            } else if (d.LEVEL == Level.THIRD && LEVEL != Level.THIRD) {
                 return 1;
             } else {
                 return (int) -(this.score[tmpSub] - d.score[tmpSub]);

@@ -1,0 +1,506 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="15.0.0">
+  <zoom_level>5</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1245</x>
+      <y>655</y>
+      <w>185</w>
+      <h>265</h>
+    </coordinates>
+    <panel_attributes>main::Subject
+--
+-MAX_STUDENT: int
+-NAME: String
+-inCharge: Teacher
+-tutoredList: ArrayList&lt;Tutored&gt;
+-tutorList: ArrayList&lt;Tutor&gt;
+-id: int
+-calcul: CalculAffectation&lt;Student&gt;
+--
++Subject(int MAX_STUDENT, String NAME, int id): ctor
++getId(): int
++getInCharge(): Teacher
++setInCharge(Teacher inCharge): void
++getMAX_STUDENT(): int
++getNAME(): String
++getTutoredList(): ArrayList&lt;Tutored&gt;
++getTutorList(): ArrayList&lt;Tutor&gt;
++contains(Tutored t): boolean
++contains(Tutor t): boolean
++getCalcul(): CalculAffectation&lt;Student&gt;
++setCalcul(CalculAffectation&lt;Student&gt; calcul): void
++contains(Student t): boolean
++toString(): String
++getAffectation(Tutored tutored): Tutor
++getAffectation(Tutor tutor): ArrayList&lt;Tutored&gt;
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>630</x>
+      <y>955</y>
+      <w>455</w>
+      <h>140</h>
+    </coordinates>
+    <panel_attributes>main::WaitingList
+--
+-subject: Subject
+-tutor: ArrayList&lt;Tutor&gt;
+-tutored: ArrayList&lt;Tutored&gt;
+--
++WaitingList(Subject subject): ctor
++WaitingList(Subject subject, ArrayList&lt;Tutored&gt; tutored, ArrayList&lt;Tutor&gt; tutor): ctor
++addTutor(Tutor t): void
++addTutored(Tutored t): void
++contains(Tutored t): boolean
++contains(Tutor t): boolean
++contains(Student t): boolean
++getSubject(): Subject
++setSubject(Subject subject): void
++getTutor(): ArrayList&lt;Tutor&gt;
++getTutored(): ArrayList&lt;Tutored&gt;
++toString(): String
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>745</x>
+      <y>110</y>
+      <w>205</w>
+      <h>100</h>
+    </coordinates>
+    <panel_attributes>main::LogInManagement
+--
+-logged: Person
+--
++LogInManagement(Person logged): ctor
++LogInManagement(): ctor
++toString(): String
+-getUserPwd(ArrayList&lt;Person&gt; p, BufferedReader br): Person
++connect(ArrayList&lt;Person&gt; p, BufferedReader br): Person
++isLogged(): boolean
++getLogged(): Person
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>0</x>
+      <y>200</y>
+      <w>610</w>
+      <h>130</h>
+    </coordinates>
+    <panel_attributes>/main::Main/
+--
+--
++main(String[] args): void
++studentScreen(Student student, WaitingList[] wait, ArrayList&lt;Subject&gt; subjects, BufferedReader br): void
++teacherScreen(Teacher teacher, WaitingList[] wait, ArrayList&lt;Subject&gt; subjects, BufferedReader br): void
++getSubjectID(Teacher teacher, BufferedReader br): int
++getSubjectID(BufferedReader br): int
++manualVerification(WaitingList[] wait, BufferedReader br, ArrayList&lt;Subject&gt; subjects, int idx): void
++autoVerification(WaitingList[] wait, BufferedReader br, ArrayList&lt;Subject&gt; subjects, int idx): void
++mainMenuTeacher(ArrayList&lt;Tutored&gt; tutores, ArrayList&lt;Tutor&gt; tuteurs, int idx, BufferedReader br, CalculAffectation&lt;Student&gt; calcul, ArrayList&lt;Subject&gt; subjects): CalculAffectation&lt;Student&gt;
++giveAffectation(Tutored tutored, WaitingList[] wait, ArrayList&lt;Subject&gt; subjects, BufferedReader br): void
++giveAffectation(Tutor tutor, WaitingList[] wait, ArrayList&lt;Subject&gt; subjects, BufferedReader br): void
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>440</x>
+      <y>430</y>
+      <w>390</w>
+      <h>230</h>
+    </coordinates>
+    <panel_attributes>main.Users::Student
+--
+-score: double[]
+-LEVEL: Level
+-fixed: boolean[]
+-tmpSub: int
+-modifier: int
+--
++Student(String nom, String prenom, String login, String password, double[] moyenne, String annee): ctor
++Student(String nom, String prenom, String password, double[] moyenne, String annee): ctor
++Student(String nom, String prenom, String login, String password, double[] moyenne, String annee, String modifier): ctor
++getLastName(): String
++setLastName(String lastName): void
++getModifier(): int
++setTmp(int tmp): void
++getName(): String
++setName(String name): void
++getScore(): double[]
++setScore(double[] score): void
++getLevel(): Level
++getFixed(): boolean[]
++setFixed(boolean fixed, int subjectID): void
++toString(): String
++toString(int subjectId): String
++compareTo(Student d): int
++equals(Object obj): boolean
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>720</x>
+      <y>255</y>
+      <w>245</w>
+      <h>145</h>
+    </coordinates>
+    <panel_attributes>/main.Users::Person/
+--
+#lastName: String
+#name: String
+#login: String
+#password: String
+--
++Person(String lastName, String name, String login, String password): ctor
++toString(): String
++getLastName(): String
++getName(): String
++getLogin(): String
++getPassword(): String
++connect(String login, String pwd): boolean
++isTeacher(): boolean
++isStudent(): boolean
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1060</x>
+      <y>270</y>
+      <w>340</w>
+      <h>110</h>
+    </coordinates>
+    <panel_attributes>main.Users::Teacher
+--
+-subjects: ArrayList&lt;Subject&gt;
+--
++Teacher(String lastName, String name, String login, String password, ArrayList&lt;Subject&gt; subjects): ctor
++Teacher(String lastName, String name, String login, String password): ctor
++Teacher(String lastName, String name, String password): ctor
++toString(): String
++addSubjects(Subject s): void
++removeSubjects(Subject s): void
++isInCharge(Subject s): boolean
++getSubjects(): ArrayList&lt;Subject&gt;
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>665</x>
+      <y>715</y>
+      <w>470</w>
+      <h>100</h>
+    </coordinates>
+    <panel_attributes>main.Users::Tutor
+--
+-tutored: Map&lt;Subject, ArrayList&lt;Tutored&gt;&gt;
+--
++Tutor(String nom, String prenom, String login, String password, double[] moyenne, String annee, Map&lt;Subject, ArrayList&lt;Tutored&gt;&gt; tutored): ctor
++Tutor(String nom, String prenom, String password, double[] moyenne, String annee, Map&lt;Subject, ArrayList&lt;Tutored&gt;&gt; tutored): ctor
++Tutor(String nom, String prenom, String password, double[] moyenne, String annee): ctor
++getTutored(): Map&lt;Subject, ArrayList&lt;Tutored&gt;&gt;
++addSubject(Subject s): boolean
++clone(): Tutor
++toString(): String
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>190</x>
+      <y>715</y>
+      <w>430</w>
+      <h>80</h>
+    </coordinates>
+    <panel_attributes>main.Users::Tutored
+--
+-tutor: Map&lt;Subject, Tutor&gt;
+--
++Tutored(String nom, String prenom, String login, String password, double[] moyenne, String annee, Map&lt;Subject, Tutor&gt; tutor): ctor
++Tutored(String nom, String prenom, String password, double[] moyenne, String annee, Map&lt;Subject, Tutor&gt; tutor): ctor
++Tutored(String nom, String prenom, String password, double[] moyenne, String annee): ctor
++getTutor(): Map&lt;Subject, Tutor&gt;
++toString(): String
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>0</x>
+      <y>90</y>
+      <w>435</w>
+      <h>100</h>
+    </coordinates>
+    <panel_attributes>/main.Util::Graph/
+--
+-idx = 5000: int
+--
++createGraph(ArrayList&lt;Tutored&gt; tutore, ArrayList&lt;Tutor&gt; tuteurs, int subjectID): GrapheNonOrienteValue&lt;Student&gt;
++turnOnAbsence(ArrayList&lt;Tutored&gt; tutore, int subjectID): void
++turnOffAbsence(ArrayList&lt;Tutored&gt; tutore, int subjectID): void
++turnOnMoyPremiere(ArrayList&lt;Tutor&gt; tutor, int subjectID): void
++turnOffMoyPremiere(ArrayList&lt;Tutor&gt; tutor, int subjectID): void
++fixCouple(ArrayList&lt;Student&gt; tutoreList, ArrayList&lt;Student&gt; tuteurList, int tutore, int tuteur, int subjectID): void
++compute(ArrayList&lt;Tutored&gt; tutores, ArrayList&lt;Tutor&gt; tuteurs, ArrayList&lt;Subject&gt; subjects, int subjectID): CalculAffectation&lt;Student&gt;
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>0</x>
+      <y>0</y>
+      <w>290</w>
+      <h>75</h>
+    </coordinates>
+    <panel_attributes>/main.Util::CsvFileHelper/
+--
++COMMA_DELIMITER = ",": String
+--
++getCSV(): List&lt;List&lt;String&gt;&gt;
++getCSV(String path, String delimiter): List&lt;List&lt;String&gt;&gt;
++writeCSV(List&lt;List&lt;String&gt;&gt; res, String fileName): void
++csvToList(String path, String delimiter, ArrayList&lt;Subject&gt; subjects): ArrayList&lt;Person&gt;
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>650</x>
+      <y>10</y>
+      <w>170</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>main.Util.exceptions::WrongInputLengthException
+--
+--
++getMessage(): String
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>305</x>
+      <y>10</y>
+      <w>150</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>main.Util.exceptions::WrongLoginException
+--
+--
++getMessage(): String
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>475</x>
+      <y>10</y>
+      <w>150</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>main.Util.exceptions::WrongPwdException
+--
+--
++getMessage(): String
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>930</x>
+      <y>475</y>
+      <w>105</w>
+      <h>55</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;enum&gt;&gt;
+main.Users::Level
+
+--
+FIRST
+SECOND
+THIRD
+--</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>420</x>
+      <y>655</y>
+      <w>185</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>350.0;10.0;350.0;80.0;10.0;80.0;10.0;120.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>675</x>
+      <y>655</y>
+      <w>205</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;80.0;390.0;80.0;390.0;120.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>915</x>
+      <y>810</y>
+      <w>340</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+m1=0..n 
+r1=-tutorList</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;80.0;660.0;80.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>420</x>
+      <y>790</y>
+      <w>835</w>
+      <h>95</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+m1=0..n
+r1=tutoredList
+</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;170.0;1650.0;170.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>825</x>
+      <y>495</y>
+      <w>115</w>
+      <h>25</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+m1=0..n
+r1=-LEVEL</panel_attributes>
+    <additional_attributes>210.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>620</x>
+      <y>395</y>
+      <w>225</w>
+      <h>45</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>430.0;10.0;430.0;50.0;10.0;50.0;10.0;70.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>960</x>
+      <y>325</y>
+      <w>110</w>
+      <h>15</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;200.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1335</x>
+      <y>375</y>
+      <w>45</w>
+      <h>285</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-&gt;
+m1=0..1
+m2=0..n
+r1=-inCharge
+r2=-subjects</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;550.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>845</x>
+      <y>205</y>
+      <w>15</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>10.0;100.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>370</x>
+      <y>790</y>
+      <w>465</w>
+      <h>175</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;270.0;910.0;270.0;910.0;330.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>930</x>
+      <y>885</y>
+      <w>325</w>
+      <h>80</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;</panel_attributes>
+    <additional_attributes>10.0;140.0;10.0;10.0;630.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>875</x>
+      <y>810</y>
+      <w>15</w>
+      <h>155</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;290.0</additional_attributes>
+  </element>
+</diagram>

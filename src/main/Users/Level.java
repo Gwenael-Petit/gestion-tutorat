@@ -5,6 +5,6 @@ package main.Users;
  */
 public enum Level {
     /*Premiere annee , deuxieme annee, troisieme annee*/
-	first,second,third;
+	FIRST,SECOND,THIRD;
     
 }
