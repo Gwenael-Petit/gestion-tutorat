@@ -3,7 +3,6 @@ package test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.io.BufferedReader;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,7 +13,6 @@ import fr.ulille.but.sae2_02.graphes.CalculAffectation;
 import fr.ulille.but.sae2_02.graphes.GrapheNonOrienteValue;
 import main.Subject;
 import main.Users.Student;
-import main.Users.Teacher;
 import main.Users.Tutor;
 import main.Users.Tutored;
 import main.Util.Graph;
@@ -110,13 +108,13 @@ public class GraphTest {
     @Test
     public void test_fixCouple() {
         Graph.fixCouple(tutoré, tuteurs, 1, 0, 1);
-        assertEquals("corentin.sotoca.etu : -5000.0 -> tanguy.bonnet.etu : 5000.0", tutoré.get(0).getLogin() + " : " + tutoré.get(0).getScore()[1] + " -> " + tuteurs.get(0).getLogin() + " : " + tuteurs.get(0).getScore()[1]);
+        assertEquals("clement.mansue.etu : -5000.0 -> abdelmalek.houhou.etu : 5000.0", tutoré.get(0).getLogin() + " : " + tutoré.get(0).getScore()[1] + " -> " + tuteurs.get(0).getLogin() + " : " + tuteurs.get(0).getScore()[1]);
     }
 
     @Test
     public void test_compute() {
         CalculAffectation<Student> calcul = Graph.compute(tutoré, tuteurs, subjects, 1);
-        assertEquals("[Arete([Login : abdelmalek.houhou.etu ; Score : [ 1.682, 10.42, 1.568, 12.09, 2.409 ] ; Level = second], [Login : corentin.sotoca.etu ; Score : [ 17.15, 18.54, 7.538, 11.47, 5.678 ] ; Level = first]), Arete([Login : tanguy.bonnet.etu ; Score : [ 0.727, 2.505, 1.664, 13.44, 12.84 ] ; Level = third], [Login : fictif.0.etu ; Score : [ 20.0, 20.0, 20.0, 20.0, 20.0 ] ; Level = first]), Arete([Login : tanguy.bonnet.etu ; Score : [ 0.727, 2.505, 1.664, 13.44, 12.84 ] ; Level = third], [Login : clement.mansue.etu ; Score : [ 2.098, 8.087, 15.09, 14.65, 1.227 ] ; Level = first])]",calcul.getAffectation().toString());
+        assertEquals("[Arete([Login : tanguy.bonnet.etu ; Score : [ 0.727, 2.505, 1.664, 13.44, 12.84 ] ; Level = THIRD], [Login : fictif.0.etu ; Score : [ 20.0, 20.0, 20.0, 20.0, 20.0 ] ; Level = FIRST]), Arete([Login : tanguy.bonnet.etu ; Score : [ 0.727, 2.505, 1.664, 13.44, 12.84 ] ; Level = THIRD], [Login : clement.mansue.etu ; Score : [ 2.098, 8.087, 15.09, 14.65, 1.227 ] ; Level = FIRST]), Arete([Login : abdelmalek.houhou.etu ; Score : [ 1.682, 10.42, 1.568, 12.09, 2.409 ] ; Level = SECOND], [Login : corentin.sotoca.etu ; Score : [ 17.15, 18.54, 7.538, 11.47, 5.678 ] ; Level = FIRST])]",calcul.getAffectation().toString());
     }
 
 }

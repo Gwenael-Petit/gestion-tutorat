@@ -64,9 +64,7 @@ public class Subject {
      * @param inCharge donc un professeur
      */
     public void setInCharge(Teacher inCharge){
-        if(inCharge.isInCharge(this)){
-            this.inCharge = inCharge;
-        }
+        this.inCharge = inCharge;
     }
 
     /**
@@ -101,17 +99,10 @@ public class Subject {
         return this.tutorList;
     }
 
-<<<<<<< HEAD
     /**index
      * Vérifie si la liste des tutorés contient un tutoré donné en paramètre
      * @param t : un tutoré
      * @return true si le tutoré fait bien partie de la liste des tutorés, false sinon
-=======
-    /**
-     * Verifie si la liste des tutores contient un tutore donne en parametre
-     * @param t : un tutore
-     * @return true si le tutore fait bien partie de la liste des tutores, false sinon
->>>>>>> 78f7ed2607d6896796449e53236825694b8c78c2
      */
     public boolean contains(Tutored t){
         return tutoredList.contains(t);

@@ -40,6 +40,9 @@ public class Student extends Person implements Comparable<Student> {
         return this.lastName;
     }
 
+    /*
+     * setter pour modifier
+     */
     public void setModifier(int modifier) { this.modifier = modifier; }
 
     /**
@@ -59,6 +62,9 @@ public class Student extends Person implements Comparable<Student> {
         return modifier;
     }
 
+    /*
+     * setter pour tmo
+     */
     public void setTmp(int tmp) {
         this.tmpSub = tmp;
     }
@@ -227,7 +233,20 @@ public class Student extends Person implements Comparable<Student> {
             fixed[i]=false;
         }
     }
-
+    
+    /**
+     * Permet de creer un etudiant grece aux informations qui le concernent
+     * Utilisation du constructeur de Person
+     * On utilise l'annee en chiffre pour lui atribuer l'annee correspondante de l'enum Level
+     * On augemente la moyenne des 3emes annees pour les favoriser dans l'affectaion des tuteurs
+     * @param nom: nom de l'etudiant
+     * @param prenom: prenom de l'etudiant
+     * @param password: mot de passe de l'etudiant
+     * @param moyenne: tableau des moyennes de l'etudiant
+     * @param annee: année d'etude au sein de la formation
+     * @param modifier: nombre d'absence de l'etudiant si 1ere annee sinon moyenne de 1ere annee
+     * @see Person
+     */
     public Student(String nom, String prenom, String password, double[] moyenne, String annee,String modifier) {   // Le modifier est le nombre d'absence en premiére année, dans les autres promotion c'est la moyenne de la premiére année de l'étudiant
         this(nom, prenom, prenom+"."+nom+".etu", password,moyenne,annee, modifier);
     }

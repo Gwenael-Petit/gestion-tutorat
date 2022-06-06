@@ -179,6 +179,14 @@ public abstract class Graph {
             tutoréList.get(tutoré).getScore()[subjectID] = -idx;
             tutoréList.get(tutoré).setFixed(true, subjectID);
             idx += 1;
+
+            for (Tutor tutor : tuteurList) {
+                tutor.setTmp(subjectID);
+            }
+
+            for (Tutored t : tutoréList) {
+                t.setTmp(subjectID);
+            }
             Collections.sort(tutoréList);
             Collections.sort(tuteurList);
         } else {

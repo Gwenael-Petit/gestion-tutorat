@@ -44,7 +44,7 @@ public abstract class Person {
      * @return information d'une personne
      */
     public String toString() {
-        return "[Login : " + name+"."+lastName+"; PWD : "+password + "]\n";
+        return "[Login : " + name+"."+lastName+" ; PWD : "+password + "]\n";
     }
 
 

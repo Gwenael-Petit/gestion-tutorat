@@ -73,17 +73,6 @@ public class WaitingList {
     }
 
     /**
-     * Verifie si le Student t est un tuteur ou un tutore ou aucun des deux
-     * @param t : un etudiant (type Student)
-     * @return true si l'etudiant t est bien un tuteur ou un tutore, false sinon
-     */
-    public boolean contains(Student t){
-        if(t instanceof Tutored)        return contains((Tutored) t);
-        else if(t instanceof Tutor)     return contains((Tutor) t);
-        else return false;
-    }
-
-    /**
      * Renvoie la matiere concernee par la file d'attente
      * @return subject soit la matiere en question
      */
