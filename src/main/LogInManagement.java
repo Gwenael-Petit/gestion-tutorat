@@ -6,28 +6,31 @@ import java.util.ArrayList;
 
 import main.Users.Person;
 import main.Util.exceptions.WrongLoginException;
-
+/**
+ * Classe qui g�re la connexion des utilisateurs en fonction d'un login et d'un mot de passe
+ */
 public class LogInManagement {
-    private Person logged;
+    //La personne de type Person qui est connectee
+	private Person logged;
 
     /**
-     * Crée un état de connexion en prenant en compte la personne connectée (logged) en paramètre
-     * @param logged : montre qui est la personne connectée
+     * Cree un etat de connexion en prenant en compte la personne connectee (logged) en parametre
+     * @param logged : montre qui est la personne connectee
      */
     public LogInManagement(Person logged) {
         this.logged = logged;
     }
     
     /** 
-     * Crée un état de connexion sans paramètre qui instancie logged à null
+     * Cree un etat de connexion sans parametre qui instancie logged a null
      */
     public LogInManagement() {
         this.logged =null;
     }
 
     /**
-     * Renvoie l'état de connexion sous forme de chaîne de caractères
-     * @return logged (de type Person) si la personne est connectée et "null" sinon
+     * Renvoie l'etat de connexion sous forme de chaine de caracteres
+     * @return logged (de type Person) si la personne est connectee et "null" sinon
      */
     @Override
     public String toString() {
@@ -63,7 +66,7 @@ public class LogInManagement {
      * "Connecte" l'utilisateur qui correspond aux login et mot de passe et lui signale
      * @param p : l'ArrayList de personnes
      * @param br : un BufferedReader
-     * @return logged soit la personne maintenant connectée
+     * @return logged soit la personne maintenant connectee
      */
     public Person connect(ArrayList<Person> p, BufferedReader br) {
         boolean flag = true;
@@ -82,15 +85,15 @@ public class LogInManagement {
     }
 
     /**
-     * Vérifie si l'utilisateur est connecté
-     * @return true si il est connecté (logged est non null) et false sinon
+     * Verifie si l'utilisateur est connecte
+     * @return true si il est connecte (logged est non null) et false sinon
      */
     public boolean isLogged(){
         return logged != null;
     }
 
     /**
-     * Renvoie qui est la personne connectée
+     * Renvoie qui est la personne connectee
      * @return logged soit la personne
      */
     public Person getLogged() {

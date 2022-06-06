@@ -15,9 +15,40 @@ import main.Users.Teacher;
 import main.Users.Tutor;
 import main.Users.Tutored;
 
+/**
+ * Classe qui g�re les CSV contenants les donnees dur les etudiants et professeurs
+ */
 public abstract class CsvFileHelper {
+	/*
+	 * Delimiter entre chaques donnees du fichier CSV
+	 */
     public static String COMMA_DELIMITER = ",";
 
+    /**
+     * Fonction qui retourne une ArrayList de donnees sur des etudiants a partir de donnees transmises
+     * @return records : ArrayList qui contient les donnees de plusieurs etudiants tuteurs et tutores avec certaines donnes qui leurs sont propres (annee, moyenne, ...) 
+     */
+    public static List<List<String>> getCSV(){ // Nous utilisions un fichier CSV a la base. Sur vscode, cela cause des soucis lors des tests
+        List<List<String>> records = new ArrayList<>();
+        // Entete du CSV : Prenom,Annee,Moyenne,Modifier
+        // En premiere annee modifier = absence
+        // En deuxieme et troisieme annee modifier = moyenne premiere annee
+        String input= "Edouard,1,6,0\nCaroline,1,8,4\nDelphine,1,9,1\nAlexandre,1,11,1\nFabrice,1,12,3\nBernard,1,14,0\nWilliam,3,15,13\nXavier,3,14,18\nVincent,3,12,10\nZoe,2,16,17\nYlann,2,12,13\nFictif1,2,1,0";
+        String[] lines = input.split("\n");
+        for(int i = 0;i<lines.length;i++){
+            String[] values = lines[i].split(COMMA_DELIMITER);
+            records.add(Arrays.asList(values));
+        }
+        return records;
+    }
+
+    /**
+     * Fonction qui retourne une ArrayList de donnees sur des etudiants a partir d'un fichier CSV les contenants
+     * @param path : chemin menant au CSV
+     * @param delimiter : delimiter choisi pour passer d'une donnee a une autre
+     * @return records : une ArrayList contenant des donnees sur les etudiants (tuteurs comme tutores)
+     * @throws IOException
+     */
     public static List<List<String>> getCSV(String path, String delimiter) throws IOException {
         List<List<String>> records = new ArrayList<>();
         try (BufferedReader br = new BufferedReader(new FileReader(path))) {
@@ -31,8 +62,16 @@ public abstract class CsvFileHelper {
         return records;
     }
 
-    public static ArrayList<Person> csvToList(String path, String delimiter, ArrayList<Subject> subjects) throws IOException {
-        List<List<String>> csv = getCSV(path, delimiter);
+    /**
+     * Fonction qui recupere les donnees d'un fichier et en retire les informations sur les personnes pour les ajouter dans une ArrayList de Person
+     * @param path : le chemin ou se trouve le fichier qui contient les donnees
+     * @param delimiter : delimiter choisi pour passer d'une donnee a une autre
+     * @param subjects : ArrayList des matieres disponibles pour le tutorat
+     * @return res : une ArrayList de Person contenant des Person et leurs donnees
+     * @throws IOException
+     */
+    public static ArrayList<Person> csvToList(String path, String delimiter, ArrayList<Subject> subjects) throws IOException{
+        List<List<String>> csv = getCSV(path,delimiter);
         ArrayList<Person> res = new ArrayList<>();
         for (int i = 0; i < csv.size(); i++) {
             List<String> line = csv.get(i);
