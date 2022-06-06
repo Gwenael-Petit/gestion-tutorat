@@ -43,4 +43,22 @@ public class Teacher extends Person {
     public ArrayList<Subject> getSubjects() {
         return subjects;
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        if(!(obj instanceof Teacher)){
+            return false;
+        }
+        Teacher tmp = (Teacher) obj;
+
+        boolean s = true;
+        for (int i = 0; i < subjects.size(); i++) {
+            if(!this.subjects.get(i).equals(tmp.subjects.get(i))){
+                s=false;
+            }
+        }
+         
+        return this.lastName.equals(tmp.lastName) && this.name.equals(tmp.name) && this.login.equals(tmp.login) && this.password.equals(tmp.password) && s;
+    }
+
 }

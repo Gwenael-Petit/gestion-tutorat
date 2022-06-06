@@ -40,6 +40,7 @@ public abstract class Main {
         while (flag) {
             LogInManagement log = new LogInManagement();
             log.connect(list, br);
+            System.out.print("\n");
 
             if (log.isLogged()) {
                 if (log.getLogged().isStudent()) {
@@ -49,6 +50,7 @@ public abstract class Main {
                     teacherScreen(t, wait, subjects, br);
                 }
             }
+            System.out.println("\n---------------------------------------------\n");
         }
 
         flag = true;
@@ -81,6 +83,7 @@ public abstract class Main {
         // Quel methode de verificaiton utiliser ? Filtrage automatique ? Ou Manuel ?
         boolean flag = true;
         while (flag) {
+            System.out.print("\n");
             System.out.println("Voulez vous filtrer a la main[M] ou filtrer automatiquement[A] ?");
             String in = "";
             try {
@@ -122,7 +125,7 @@ public abstract class Main {
         int idx = -1; // Indice pour la matiére qui interesse l'étudiant
 
         while (idx <= 0 || idx >= 5) { // Si la matiére n'existe pas on continue de boucler
-            System.out.println("Quelle matiére vous interesse ?");
+            System.out.println("Quelle matiére vous interesse ? [0-4]");
             try {
                 idx = Integer.parseInt(br.readLine());
             } catch (IOException e) {
@@ -137,7 +140,7 @@ public abstract class Main {
 
     public static void manualVerification(WaitingList[] wait, BufferedReader br, ArrayList<Subject> subjects, int idx) {
         if (wait[idx].getTutor().size() > 0) {
-            System.out.println("Entrez Y ou N pour respectivement accepter ou refuser chaque candidature de tuteurs:");
+            System.out.println("\nEntrez Y ou N pour respectivement accepter ou refuser chaque candidature de tuteurs:");
             while (wait[idx].getTutor().size() > 0) {
                 System.out.println(wait[idx].getTutor().get(0).toString(idx));
                 int ok = -1;
@@ -359,7 +362,36 @@ public abstract class Main {
             }
 
             if (in.equals("F")) {
-                System.out.println("Vous pouvez fixer ici");
+                String tuteur="";
+                String tutoré="";
+                try{
+                    System.out.println("Quel tuteur voulez vous fixer ? (entrez un login)");
+                    tuteur = br.readLine();
+                    System.out.println("Et avec quel tutoré voulez vous le fixer ? (entrez un login)");
+                    tutoré = br.readLine();
+                }catch(IOException e){
+                    System.out.println(e.getMessage());
+                }
+                int tuteuridx=-1;
+                int tutoréidx=-1;
+
+                for (int i = 0; i < tuteurs.size(); i++) {
+                    if(tuteurs.get(i).getLogin().equals(tuteur)){
+                        tuteuridx=i;
+                    }
+                }
+
+                for (int i = 0; i < tutorés.size(); i++) {
+                    if(tutorés.get(i).getLogin().equals(tutoré)){
+                        tutoréidx=i;
+                    }
+                }
+
+                if(tutoréidx!= -1 && tuteuridx != -1){
+                    Graph.fixCouple(tutorés, tuteurs, tutoréidx, tuteuridx, idx);
+                }else{
+                    System.out.println("Ce couple n'existe pas. Veuillez rééssayer.");
+                }
             } else if (in.equals("C")) {
                 for (int i = 0; i < tuteurs.size(); i++) {
                     if(tuteurs.get(i).getName().equals("Fictif")){

@@ -3,7 +3,6 @@ package main.Util;
 import java.util.ArrayList;
 import java.util.Collections;
 
-
 import fr.ulille.but.sae2_02.graphes.CalculAffectation;
 import fr.ulille.but.sae2_02.graphes.GrapheNonOrienteValue;
 import main.Users.Student;
@@ -12,12 +11,10 @@ import main.Users.Tutored;
 import main.Subject;
 import main.Users.Level;
 
-
 public abstract class Graph {
     private static int idx = 5000;
 
-    public static GrapheNonOrienteValue<Student> createGraph(ArrayList<Tutored> tutoré, ArrayList<Tutor> tuteurs,
-            int subjectID) {
+    public static GrapheNonOrienteValue<Student> createGraph(ArrayList<Tutored> tutoré, ArrayList<Tutor> tuteurs, int subjectID) {
 
         for (Tutor s : tuteurs) {
             s.setTmp(subjectID);
@@ -30,16 +27,18 @@ public abstract class Graph {
 
         GrapheNonOrienteValue<Student> graph = new GrapheNonOrienteValue<>();
 
-        for (int i = 0; i < tutoré.size(); i++) { // tuteurs.size() = tutoré.size() pour la partie graph
+        for (int i = 0; i < tutoré.size(); i++) {
             graph.ajouterSommet(tutoré.get(i));
+        }
+
+        for (int i = 0; i < tuteurs.size(); i++) {
             graph.ajouterSommet(tuteurs.get(i));
         }
 
         Double malus = 1.0; // On crée donc les arrétes avec les consignes fourni dans le rapport
         for (int i = 0; i < tuteurs.size(); i++) {
             for (int j = 0; j < tutoré.size(); j++) {
-                graph.ajouterArete(tuteurs.get(i), tutoré.get(j),
-                        (tutoré.get(j).getScore()[subjectID] - tuteurs.get(i).getScore()[subjectID]) * malus);
+                graph.ajouterArete(tuteurs.get(i), tutoré.get(j), (tutoré.get(j).getScore()[subjectID] - tuteurs.get(i).getScore()[subjectID]) * malus);
                 malus = malus - 0.02;
             }
         }
@@ -47,66 +46,75 @@ public abstract class Graph {
     }
 
     public static void turnOnAbsence(ArrayList<Tutored> tutoré, int subjectID) {
-        for (int i = 0; i < tutoré.size(); i++) {
-            if (!tutoré.get(i).getFixed()[subjectID]) {
-                tutoré.get(i).getScore()[subjectID] = tutoré.get(i).getScore()[subjectID]
-                        + tutoré.get(i).getModifier() * 0.1;
-            }
+        if (!tutoré.get(0).isAbsences()) {
+            for (int i = 0; i < tutoré.size(); i++) {
+                if (!tutoré.get(i).getFixed()[subjectID]) {
+                    tutoré.get(i).getScore()[subjectID] = tutoré.get(i).getScore()[subjectID] + tutoré.get(i).getModifier() * 0.1;
+                }
 
+            }
+            for (Tutored s : tutoré) {
+                s.setTmp(subjectID);
+                s.setAbsences(true);
+            }
+            Collections.sort(tutoré);
         }
-        for (Tutored s : tutoré) {
-            s.setTmp(subjectID);
-        }
-        Collections.sort(tutoré);
     }
 
     public static void turnOffAbsence(ArrayList<Tutored> tutoré, int subjectID) {
-        for (int i = 0; i < tutoré.size(); i++) {
-            if (!tutoré.get(i).getFixed()[subjectID]) {
-                tutoré.get(i).getScore()[subjectID] = tutoré.get(i).getScore()[subjectID]
-                        - tutoré.get(i).getModifier() * 0.1;
+        if (tutoré.get(0).isAbsences()) {
+            for (int i = 0; i < tutoré.size(); i++) {
+                if (!tutoré.get(i).getFixed()[subjectID]) {
+                    tutoré.get(i).getScore()[subjectID] = tutoré.get(i).getScore()[subjectID] - tutoré.get(i).getModifier() * 0.1;
+                }
             }
+            for (Tutored s : tutoré) {
+                s.setTmp(subjectID);
+                s.setAbsences(false);
+            }
+            Collections.sort(tutoré);
         }
-        for (Tutored s : tutoré) {
-            s.setTmp(subjectID);
-        }
-        Collections.sort(tutoré);
     }
 
     public static void turnOnMoyPremiere(ArrayList<Tutor> tutor, int subjectID) {
-        for (int i = 0; i < tutor.size(); i++) {
-            if (!tutor.get(i).getFixed()[subjectID]) {
-                tutor.get(i).getScore()[subjectID] = tutor.get(i).getScore()[subjectID]
-                        + tutor.get(i).getModifier() * 0.1;
+        if (!tutor.get(0).isMoyPremiere()) {
+
+            for (int i = 0; i < tutor.size(); i++) {
+                if (!tutor.get(i).getFixed()[subjectID]) {
+                    tutor.get(i).getScore()[subjectID] = tutor.get(i).getScore()[subjectID] + tutor.get(i).getModifier() * 0.1;
+                }
             }
+            for (Tutor s : tutor) {
+                s.setTmp(subjectID);
+                s.setMoyPremiere(true);
+            }
+            Collections.sort(tutor);
         }
-        for (Tutor s : tutor) {
-            s.setTmp(subjectID);
-        }
-        Collections.sort(tutor);
     }
 
     public static void turnOffMoyPremiere(ArrayList<Tutor> tutor, int subjectID) {
-        for (int i = 0; i < tutor.size(); i++) {
-            if (!tutor.get(i).getFixed()[subjectID]) {
-                tutor.get(i).getScore()[subjectID] = tutor.get(i).getScore()[subjectID]
-                        - tutor.get(i).getModifier() * 0.1;
+        if (tutor.get(0).isMoyPremiere()) {
+
+            for (int i = 0; i < tutor.size(); i++) {
+                if (!tutor.get(i).getFixed()[subjectID]) {
+                    tutor.get(i).getScore()[subjectID] = tutor.get(i).getScore()[subjectID] - tutor.get(i).getModifier() * 0.1;
+                }
             }
+            for (Tutor s : tutor) {
+                s.setTmp(subjectID);
+                s.setMoyPremiere(false);
+            }
+            Collections.sort(tutor);
         }
-        for (Tutor s : tutor) {
-            s.setTmp(subjectID);
-        }
-        Collections.sort(tutor);
     }
 
-    public static void fixCouple(ArrayList<Student> tutoréList, ArrayList<Student> tuteurList, int tutoré, int tuteur,
-            int subjectID) {
+    public static void fixCouple(ArrayList<Tutored> tutoréList, ArrayList<Tutor> tuteurList, int tutoré, int tuteur, int subjectID) {
         // On fixe les couples de notre choix. On ne peux pas fixer un couple avec un
         // étudiants qui a déjà été fixé
         if (!tuteurList.get(tuteur).getFixed()[subjectID] && !tutoréList.get(tutoré).getFixed()[subjectID]) {
             tuteurList.get(tuteur).getScore()[subjectID] = idx;
             tuteurList.get(tuteur).setFixed(true, subjectID);
-            tutoréList.get(tutoré).getScore()[subjectID] = idx;
+            tutoréList.get(tutoré).getScore()[subjectID] = -idx;
             tutoréList.get(tutoré).setFixed(true, subjectID);
             idx += 1;
             Collections.sort(tutoréList);
@@ -117,31 +125,31 @@ public abstract class Graph {
     }
 
     public static CalculAffectation<Student> compute(ArrayList<Tutored> tutorés, ArrayList<Tutor> tuteurs, ArrayList<Subject> subjects, int subjectID) {
-        int idx=0;
-        while(tutorés.size()!=tuteurs.size()){
-            if(tutorés.size()<tuteurs.size()){
+        int idx = 0;
+        while (tutorés.size() != tuteurs.size()) {
+            if (tutorés.size() < tuteurs.size()) {
                 double[] tmp = new double[5];
-                for(int i =0; i<5;i++){
-                    tmp[i]=(20+idx*0.1);
+                for (int i = 0; i < 5; i++) {
+                    tmp[i] = (20 + idx * 0.1);
                 }
-                tutorés.add(new Tutored(""+idx, "Fictif", "password", tmp, "1"));
-            }else if (tutorés.size()>tuteurs.size()){   
-                Tutor res=null;
+                tutorés.add(new Tutored("" + idx, "Fictif", "password", tmp, "1", "0"));
+            } else if (tutorés.size() > tuteurs.size()) {
+                Tutor res = null;
                 for (int i = 0; i < tuteurs.size(); i++) {
-                    if(tuteurs.get(i).getLevel().equals(Level.third)){
-                        try{
-                            res =  tuteurs.get(i).clone();
-                        }catch(CloneNotSupportedException e){
+                    if (tuteurs.get(i).getLevel().equals(Level.third)) {
+                        try {
+                            res = tuteurs.get(i).clone();
+                        } catch (CloneNotSupportedException e) {
                             System.out.println(e.getMessage());
                         }
                     }
                 }
-                if(res==null){
+                if (res == null) {
                     double[] tmp = new double[5];
-                    for(int i =0; i<5;i++){
-                        tmp[i]=(0-idx*0.1);
+                    for (int i = 0; i < 5; i++) {
+                        tmp[i] = (0 - idx * 0.1);
                     }
-                    res = new Tutor(""+idx, "Fictif", "password", tmp, "2");
+                    res = new Tutor("" + idx, "Fictif", "password", tmp, "2", "0");
                 }
                 tuteurs.add(res);
             }
@@ -166,14 +174,14 @@ public abstract class Graph {
             tuteurs = new ArrayList<>();
             tutorés = new ArrayList<>();
             if (s1 instanceof Tutor) {
-                tuteurs.add( (Tutor) s1);
+                tuteurs.add((Tutor) s1);
             } else {
-                tutorés.add( (Tutored) s1);
+                tutorés.add((Tutored) s1);
             }
             if (s2 instanceof Tutor) {
-                tuteurs.add( (Tutor) s2);
+                tuteurs.add((Tutor) s2);
             } else {
-                tutorés.add( (Tutored) s2);
+                tutorés.add((Tutored) s2);
             }
         }
         return calcul;

@@ -2,6 +2,6 @@ package main.Util.exceptions;
 public class WrongLoginException extends Exception{
     @Override
     public String getMessage() {
-        return  "Mauvais login, veuillez réessayer.";
+        return  "Votre login/mot de passe est erroné. Veuillez les retaper.";
     }
 }

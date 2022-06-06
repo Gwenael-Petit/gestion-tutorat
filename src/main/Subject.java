@@ -92,7 +92,7 @@ public class Subject {
         return this.tutorList;
     }
 
-    /**
+    /**index
      * Vérifie si la liste des tutorés contient un tutoré donné en paramètre
      * @param t : un tutoré
      * @return true si le tutoré fait bien partie de la liste des tutorés, false sinon

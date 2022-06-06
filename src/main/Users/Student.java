@@ -11,6 +11,8 @@ public class Student extends Person implements Comparable<Student> {
         return this.lastName;
     }
 
+    public void setModifier(int modifier) { this.modifier = modifier; }
+
     public void setLastName(String lastName) {
         this.lastName = lastName;
     }
@@ -118,6 +120,10 @@ public class Student extends Person implements Comparable<Student> {
         }
     }
 
+    public Student(String nom, String prenom, String password, double[] moyenne, String annee,String modifier) {   // Le modifier est le nombre d'absence en premiére année, dans les autres promotion c'est la moyenne de la premiére année de l'étudiant
+        this(nom, prenom, prenom+"."+nom+".etu", password,moyenne,annee, modifier);
+    }
+
     public String toString() {
         String str = "[ "+score[0];
         for (int i = 1; i < score.length; i++) {
@@ -156,8 +162,18 @@ public class Student extends Person implements Comparable<Student> {
             return false;
         }
         Student tmp = (Student) obj;
+
+        boolean s = true;
+        boolean f = true;
+        for (int i = 0; i < score.length; i++) {
+            if(tmp.score[i]!=score[i]){
+                s=false;
+            }if(tmp.fixed[i]!=fixed[i]){
+                f=false;
+            }
+        }
          
-        return this.LEVEL == tmp.LEVEL && this.score == tmp.score && this.lastName == tmp.lastName && this.name == tmp.name;
+        return this.LEVEL == tmp.LEVEL && this.lastName.equals(tmp.lastName) && this.name.equals(tmp.name) && s && f && this.login.equals(tmp.login) && this.modifier == tmp.modifier && this.password.equals(tmp.password);
     }
 
     
