@@ -17,7 +17,7 @@ public class WrongLoginExceptionTest {
     }
 
     @Test
-    public void test_getMessage() { 
+    public void testGetMessage() { 
         assertEquals("Votre login/mot de passe est erroné. Veuillez les retaper.", e.getMessage());
     }
 }

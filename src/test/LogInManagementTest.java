@@ -20,7 +20,7 @@ public class LogInManagementTest {
     }
 
     @Test
-    public void test_toString() { 
+    public void testToString() { 
         assertEquals("null", l1.toString());
         assertEquals(t1.toString(), l2.toString());
     }

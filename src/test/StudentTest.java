@@ -25,7 +25,7 @@ public class StudentTest {
     }
 
     @Test
-    public void test_toString() {
+    public void testToString() {
         assertEquals("[Login : maxime.jhonson.etu ; Score : [ 1.682, 10.42, 1.568, 12.09, 2.409 ] ; Level = SECOND]", s1.toString());
         assertEquals("[Login : simon.leleu.etu ; Score : [ 0.727, 2.505, 1.664, 13.44, 12.84 ] ; Level = FIRST]", s2.toString());
         assertEquals("[Login : arthur.smith.etu ; Score : [ 17.15, 18.54, 7.538, 11.47, 5.678 ] ; Level = THIRD]", s3.toString());
@@ -36,7 +36,7 @@ public class StudentTest {
     }
 
     @Test
-    public void test_compareTo() {
+    public void testCompareTo() {
         s1.setTmp(1);
         s2.setTmp(1);
         s3.setTmp(1);
@@ -48,7 +48,7 @@ public class StudentTest {
     }
 
     @Test
-    public void test_equals() {
+    public void testEquals() {
         assertFalse(s1.equals(s2));
         assertFalse(s2.equals(s3));
         assertTrue(s3.equals(s3));

@@ -66,7 +66,7 @@ public class CSVFileHelperTest {/*
 	}
 
 	@Test
-    public void test_getCSV() throws IOException{
+    public void testGetCSV() throws IOException{
 		l = CsvFileHelper.getCSV(path, delimiter);
 		
 		assertEquals(t1.getName(), l.get(0).get(0)); 
@@ -77,7 +77,7 @@ public class CSVFileHelperTest {/*
     }
 
 	@Test
-    public void test_csvToList() throws IOException{
+    public void testCsvToList() throws IOException{
 		ArrayList<Person> list = CsvFileHelper.csvToList(path,delimiter,subjects);
 
 		assertTrue(list.contains(t1)); 

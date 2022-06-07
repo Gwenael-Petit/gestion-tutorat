@@ -54,7 +54,7 @@ public abstract class Graph {
             graph.ajouterSommet(tuteurs.get(i));
         }
 
-        Double malus = 1.0; // On cr�e donc les arr�tes avec les consignes fourni dans le rapport
+        Double malus = 1.0; // On cree donc les arretes avec les consignes fourni dans le rapport
         for (int i = 0; i < tuteurs.size(); i++) {
             for (int j = 0; j < tutore.size(); j++) {
                 graph.ajouterArete(tuteurs.get(i), tutore.get(j), (tutore.get(j).getScore()[subjectID] - tuteurs.get(i).getScore()[subjectID]) * malus);
@@ -230,7 +230,7 @@ public abstract class Graph {
                 if (res == null) {
                     double[] tmp = new double[5];
                     for (int i = 0; i < 5; i++) {
-                        tmp[i] = (0 - idx * 0.1);
+                        tmp[i] = 0 - idx * 0.1;
                     }
                     res = new Tutor("" + idx, "Fictif", "password", tmp, "2", "0");
                 }
