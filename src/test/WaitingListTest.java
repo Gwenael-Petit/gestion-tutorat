@@ -25,9 +25,8 @@ public class WaitingListTest {
         w = new WaitingList(s);
     }
 
-    // Ce test plante sur nos machine mais ne devrais pas.
     @Test
-    public void test_add(){
+    public void testAdd(){
         w.addTutor(t1);
         assertTrue(w.contains(t1));
         assertFalse(w.contains(t2));
@@ -35,9 +34,8 @@ public class WaitingListTest {
         assertTrue(w.contains(t2));
     }
 
-    // Ce test plante sur nos machine mais ne devrais pas.
     @Test
-    public void test_contains(){
+    public void testContains(){
         w.addTutor(t1);
         assertFalse(w.contains(t2));
         assertTrue(w.contains(t1));

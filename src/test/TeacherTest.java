@@ -20,15 +20,14 @@ public class TeacherTest {
 
     }
 
-    // Ce test plante sur nos machine mais ne devrais pas. Un des deux strings a 38 char alors que l'autre en a 37, impossible de trouver ou est celui en trop
     @Test
-    public void test_toString() { 
+    public void testToString() { 
         assertEquals("[Login : philippe.mathieu ; PWD : pm]\n",t2.toString());
         assertEquals("[Login : isabelle.delille ; PWD : id]\n",t1.toString());
     }
 
     @Test
-    public void test_Subject(){
+    public void testSubject(){
         Subject s = new Subject(50, "Oui", 1);
         t1.addSubjects(s);
         assertTrue(t1.getSubjects().contains(s));
@@ -38,7 +37,7 @@ public class TeacherTest {
     }
 
     @Test
-    public void test_equals(){
+    public void testEquals(){
         Teacher t3 = new Teacher("delille", "isabelle", "id");
         assertTrue(t3.equals(t1));
         assertFalse(t3.equals(t2));

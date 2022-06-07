@@ -63,7 +63,7 @@ public class Student extends Person implements Comparable<Student> {
     }
 
     /*
-     * setter pour tmo
+     * setter pour tmp
      */
     public void setTmp(int tmp) {
         this.tmpSub = tmp;

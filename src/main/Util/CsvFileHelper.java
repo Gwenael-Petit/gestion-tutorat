@@ -16,13 +16,13 @@ import main.Users.Tutor;
 import main.Users.Tutored;
 
 /**
- * Classe qui g�re les CSV contenants les donnees dur les etudiants et professeurs
+ * Classe qui gere les CSV contenants les donnees dur les etudiants et professeurs
  */
 public abstract class CsvFileHelper {
 	/*
 	 * Delimiter entre chaques donnees du fichier CSV
 	 */
-    public static String COMMA_DELIMITER = ",";
+    public static String commaDelimiter = ",";
 
     /**
      * Fonction qui retourne une ArrayList de donnees sur des etudiants a partir de donnees transmises
@@ -36,7 +36,7 @@ public abstract class CsvFileHelper {
         String input= "Edouard,1,6,0\nCaroline,1,8,4\nDelphine,1,9,1\nAlexandre,1,11,1\nFabrice,1,12,3\nBernard,1,14,0\nWilliam,3,15,13\nXavier,3,14,18\nVincent,3,12,10\nZoe,2,16,17\nYlann,2,12,13\nFictif1,2,1,0";
         String[] lines = input.split("\n");
         for(int i = 0;i<lines.length;i++){
-            String[] values = lines[i].split(COMMA_DELIMITER);
+            String[] values = lines[i].split(commaDelimiter);
             records.add(Arrays.asList(values));
         }
         return records;

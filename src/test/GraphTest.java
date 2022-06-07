@@ -68,14 +68,14 @@ public class GraphTest {
     }
 
     @Test
-    public void test_createGraph() {
+    public void testCreateGraph() {
         graph = Graph.createGraph(tutore, tuteurs, 1);
         assertEquals(5.58, Math.floor(graph.getPoids(tuteurs.get(0), tutore.get(0)) * 100) / 100);
         assertEquals(7.47, Math.floor(graph.getPoids(tuteurs.get(1), tutore.get(1)) * 100) / 100);
     }
 
     @Test
-    public void test_absences() throws CloneNotSupportedException {
+    public void testAbsences() throws CloneNotSupportedException {
         double moyenne = tutore.get(0).getScore()[1];
         Tutored t = tutore.get(0);
         for (int i = 0; i < 2; i++) {
@@ -92,7 +92,7 @@ public class GraphTest {
     }
 
     @Test
-    public void test_moyPremiere() throws CloneNotSupportedException {
+    public void testMoyPremiere() throws CloneNotSupportedException {
         double moyenne = tuteurs.get(0).getScore()[1];
         Tutor t = tuteurs.get(0);
         for (int i = 0; i < 2; i++) {
@@ -106,13 +106,13 @@ public class GraphTest {
     }
 
     @Test
-    public void test_fixCouple() {
+    public void testFixCouple() {
         Graph.fixCouple(tutore, tuteurs, 1, 0, 1);
         assertEquals("clement.mansue.etu : -5000.0 -> abdelmalek.houhou.etu : 5000.0", tutore.get(0).getLogin() + " : " + tutore.get(0).getScore()[1] + " -> " + tuteurs.get(0).getLogin() + " : " + tuteurs.get(0).getScore()[1]);
     }
 
     @Test
-    public void test_compute() {
+    public void testCompute() {
         CalculAffectation<Student> calcul = Graph.compute(tutore, tuteurs, subjects, 1);
         assertEquals("[Arete([Login : tanguy.bonnet.etu ; Score : [ 0.727, 2.505, 1.664, 13.44, 12.84 ] ; Level = THIRD], [Login : fictif.0.etu ; Score : [ 20.0, 20.0, 20.0, 20.0, 20.0 ] ; Level = FIRST]), Arete([Login : tanguy.bonnet.etu ; Score : [ 0.727, 2.505, 1.664, 13.44, 12.84 ] ; Level = THIRD], [Login : clement.mansue.etu ; Score : [ 2.098, 8.087, 15.09, 14.65, 1.227 ] ; Level = FIRST]), Arete([Login : abdelmalek.houhou.etu ; Score : [ 1.682, 10.42, 1.568, 12.09, 2.409 ] ; Level = SECOND], [Login : corentin.sotoca.etu ; Score : [ 17.15, 18.54, 7.538, 11.47, 5.678 ] ; Level = FIRST])]",calcul.getAffectation().toString());
     }
