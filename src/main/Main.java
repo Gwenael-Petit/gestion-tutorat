@@ -402,7 +402,7 @@ public abstract class Main {
      * @param subjects : la liste des matieres disponibles pour le tutorat
      * @return calcul : le calcul d'affectation � la fin de la gestion des affectations tuteurs/tutores
      */
-    public static CalculAffectation<Student> mainMenuTeacher(ArrayList<Tutored> tutorés, ArrayList<Tutor> tuteurs, int idx, BufferedReader br, CalculAffectation<Student> calcul, ArrayList<Subject> subjects) {
+    public static CalculAffectation<Student> mainMenuTeacher(ArrayList<Tutored> tutores, ArrayList<Tutor> tuteurs, int idx, BufferedReader br, CalculAffectation<Student> calcul, ArrayList<Subject> subjects) {
         // Menu principal du prof
         String in = "";
         boolean flag = true;
@@ -420,17 +420,17 @@ public abstract class Main {
 
             if (in.equals("F")) {
                 String tuteur="";
-                String tutoré="";
+                String tutore="";
                 try{
                     System.out.println("Quel tuteur voulez vous fixer ? (entrez un login)");
                     tuteur = br.readLine();
                     System.out.println("Et avec quel tutoré voulez vous le fixer ? (entrez un login)");
-                    tutoré = br.readLine();
+                    tutore = br.readLine();
                 }catch(IOException e){
                     System.out.println(e.getMessage());
                 }
                 int tuteuridx=-1;
-                int tutoréidx=-1;
+                int tutoreidx=-1;
 
                 for (int i = 0; i < tuteurs.size(); i++) {
                     if(tuteurs.get(i).getLogin().equals(tuteur)){
@@ -438,14 +438,14 @@ public abstract class Main {
                     }
                 }
 
-                for (int i = 0; i < tutorés.size(); i++) {
-                    if(tutorés.get(i).getLogin().equals(tutoré)){
-                        tutoréidx=i;
+                for (int i = 0; i < tutores.size(); i++) {
+                    if(tutores.get(i).getLogin().equals(tutore)){
+                        tutoreidx=i;
                     }
                 }
 
-                if(tutoréidx!= -1 && tuteuridx != -1){
-                    Graph.fixCouple(tutorés, tuteurs, tutoréidx, tuteuridx, idx); // Todo : Probleme a fix ici
+                if(tutoreidx!= -1 && tuteuridx != -1){
+                    Graph.fixCouple(tutores, tuteurs, tutoreidx, tuteuridx, idx); // Todo : Probleme a fix ici
                 }else{
                     System.out.println("Ce couple n'existe pas. Veuillez rééssayer.");
                 }
@@ -456,20 +456,20 @@ public abstract class Main {
                         i--;
                     }
                 }
-                for (int i = 0; i < tutorés.size(); i++) {
-                    if(tutorés.get(i).getName().equals("Fictif")){
-                        tutorés.remove(i);
+                for (int i = 0; i < tutores.size(); i++) {
+                    if(tutores.get(i).getName().equals("Fictif")){
+                        tutores.remove(i);
                         i--;
                     }
                 }
-                calcul = Graph.compute(tutorés, tuteurs, subjects,idx);
+                calcul = Graph.compute(tutores, tuteurs, subjects,idx);
             } else if (in.equals("A")) {
                 if (absence) {
-                    Graph.turnOffAbsence(tutorés, idx);
+                    Graph.turnOffAbsence(tutores, idx);
                     absence = false;
                     System.out.println("\nVous avez desactive la prise en compte des absences de premiere annee dans le calcul d'affectation.");
                 } else {
-                    Graph.turnOnAbsence(tutorés, idx);
+                    Graph.turnOnAbsence(tutores, idx);
                     absence = true;
                     System.out.println("\nVous avez active la prise en compte des absences de premiere annee dans le calcul d'affectation.");
                 }
