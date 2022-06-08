@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+  Copyright (c) 2015, 2019, Gluon and/or its affiliates.
+  All rights reserved. Use is subject to license terms.
+
+  This file is available and licensed under the following license:
+
+  Redistribution and use in source and binary forms, with or without
+  modification, are permitted provided that the following conditions
+  are met:
+
+  - Redistributions of source code must retain the above copyright
+    notice, this list of conditions and the following disclaimer.
+  - Redistributions in binary form must reproduce the above copyright
+    notice, this list of conditions and the following disclaimer in
+    the documentation and/or other materials provided with the distribution.
+  - Neither the name of Oracle Corporation nor the names of its
+    contributors may be used to endorse or promote products derived
+    from this software without specific prior written permission.
+
+  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+  "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+  LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
+  A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
+  OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+  SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
+  LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+  DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
+  THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+  (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+  OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+-->
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.ScrollBar?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TitledPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox prefHeight="715.0" prefWidth="1016.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.ihm.ChoicePage">
+  <children>
+      <TitledPane animated="false" prefHeight="21.0" prefWidth="640.0" text="Tutorat_Prof" />
+    <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="503.0" prefWidth="757.0" VBox.vgrow="ALWAYS">
+         <children>
+            <HBox layoutX="11.0" layoutY="43.0" prefHeight="591.0" prefWidth="989.0">
+               <children>
+                  <ListView editable="true" orientation="HORIZONTAL" prefHeight="428.0" prefWidth="270.0">
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets></ListView>
+                  <ScrollBar orientation="VERTICAL" />
+                  <Pane prefHeight="200.0" prefWidth="200.0" />
+                  <VBox prefHeight="428.0" prefWidth="365.0">
+                     <children>
+                        <HBox prefHeight="186.0" prefWidth="365.0">
+                           <children>
+                              <VBox prefHeight="187.0" prefWidth="159.0">
+                                 <children>
+                                    <Label prefHeight="52.0" prefWidth="39.0" text="Nom :" />
+                                    <Label prefHeight="54.0" prefWidth="50.0" text="Année :" />
+                                    <Label prefHeight="48.0" prefWidth="68.0" text="Moyenne :" />
+                                    <Label prefHeight="47.0" prefWidth="78.0" text="Abscences :" />
+                                 </children>
+                              </VBox>
+                              <ImageView fitHeight="187.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../../Téléchargements/personne_icone.jpeg" />
+                                 </image>
+                              </ImageView>
+                           </children>
+                        </HBox>
+                        <Label prefHeight="23.0" prefWidth="142.0" text="Remarques étudiant :" />
+                        <TextArea editable="false" prefHeight="200.0" prefWidth="200.0" text="Lorem ipsum dolor sit amet. &#10;Ad magni nostrum et esse doloribus vel consequatur&#10;delectus qui velit atque qui nihil sunt. &#10;Qui corrupti nihil est reiciendis cumque eos &#10;molestiae voluptatem. Non rerum animi sit &#10;explicabo iure ex perspiciatis nulla est vitae &#10;deserunt qui quia quaerquo rerum iusto. " />
+                     </children>
+                  </VBox>
+               </children>
+            </HBox>
+            <CheckBox layoutX="47.0" layoutY="14.0" mnemonicParsing="false" text="Sélectionner tout" />
+            <Button layoutX="101.0" layoutY="643.0" mnemonicParsing="false" text="Filtrer" />
+            <Button layoutX="559.0" layoutY="478.0" mnemonicParsing="false" text="Accepter" />
+            <Button layoutX="697.0" layoutY="478.0" mnemonicParsing="false" text="Refuser" />
+            <Button fx:id="NextButton" layoutX="800.0" layoutY="600.0" mnemonicParsing="false" onAction="#next" text="Suivant" />
+         </children>
+    </AnchorPane>
+  </children>
+</VBox>

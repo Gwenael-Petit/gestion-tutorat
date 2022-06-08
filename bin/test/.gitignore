@@ -1,2 +1,7 @@
 /GraphTest.class
 /StudentTest.class
+/CSVFileHelperTest.class
+/LogInManagementTest.class
+/TeacherTest.class
+/WaitingListTest.class
+/WrongLoginExceptionTest.class
