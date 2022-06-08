@@ -73,7 +73,7 @@ public class LogInManagement {
         while (flag) {
             try {
                 logged = getUserPwd(p,br);
-                System.out.println("Vous êtes connecté !");
+                System.out.println("Vous etes connecte !");
                 flag = false;
             } catch(IOException e){
                 System.out.println(e.getMessage());

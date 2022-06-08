@@ -340,7 +340,7 @@ public abstract class Main {
                                 throw new Exception("La valeur ne peut pas etre inferieur a 0 !");
                             }
                         } catch (IOException e) {
-                            System.out.println("Entrée incorrecte !");
+                            System.out.println("Entree incorrecte !");
                         } catch (NumberFormatException e) {
                             System.out.println("Ceci n'est pas un nombre valide");
                         } catch (Exception e) {
@@ -364,10 +364,10 @@ public abstract class Main {
                             in = br.readLine();
                             nb = Double.parseDouble(in);
                             if (nb < 0) {
-                                throw new Exception("La valeur ne peut pas être inferieur a 0 !");
+                                throw new Exception("La valeur ne peut pas etre inferieur a 0 !");
                             }
                         } catch (IOException e) {
-                            System.out.println("Entrée incorrecte !");
+                            System.out.println("Entree incorrecte !");
                         } catch (NumberFormatException e) {
                             System.out.println("Ceci n'est pas un nombre valide");
                         } catch (Exception e) {
@@ -424,7 +424,7 @@ public abstract class Main {
                 try{
                     System.out.println("Quel tuteur voulez vous fixer ? (entrez un login)");
                     tuteur = br.readLine();
-                    System.out.println("Et avec quel tutoré voulez vous le fixer ? (entrez un login)");
+                    System.out.println("Et avec quel tutore voulez vous le fixer ? (entrez un login)");
                     tutore = br.readLine();
                 }catch(IOException e){
                     System.out.println(e.getMessage());
@@ -447,7 +447,7 @@ public abstract class Main {
                 if(tutoreidx!= -1 && tuteuridx != -1){
                     Graph.fixCouple(tutores, tuteurs, tutoreidx, tuteuridx, idx); // Todo : Probleme a fix ici
                 }else{
-                    System.out.println("Ce couple n'existe pas. Veuillez rééssayer.");
+                    System.out.println("Ce couple n'existe pas. Veuillez ressayer.");
                 }
             } else if (in.equals("C")) {
                 for (int i = 0; i < tuteurs.size(); i++) {

@@ -297,44 +297,12 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>650</x>
-      <y>10</y>
-      <w>170</w>
-      <h>40</h>
-    </coordinates>
-    <panel_attributes>main.Util.exceptions::WrongInputLengthException
---
---
-+getMessage(): String
---
-</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>UMLClass</id>
-    <coordinates>
       <x>305</x>
       <y>10</y>
       <w>150</w>
       <h>40</h>
     </coordinates>
     <panel_attributes>main.Util.exceptions::WrongLoginException
---
---
-+getMessage(): String
---
-</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>UMLClass</id>
-    <coordinates>
-      <x>475</x>
-      <y>10</y>
-      <w>150</w>
-      <h>40</h>
-    </coordinates>
-    <panel_attributes>main.Util.exceptions::WrongPwdException
 --
 --
 +getMessage(): String
@@ -418,7 +386,7 @@ r1=tutoredList
       <h>25</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
-m1=0..n
+m1=1..1
 r1=-LEVEL</panel_attributes>
     <additional_attributes>210.0;20.0;10.0;20.0</additional_attributes>
   </element>

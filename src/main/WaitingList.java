@@ -109,7 +109,7 @@ public class WaitingList {
      * @return res soit la chaine de caracteres en question
      */
     public String toString() {
-        String res = subject.toString() + "\nTuteurs :\n" +tutor.toString() + "\nTutorés :\n"+ tutored.toString();
+        String res = subject.toString() + "\nTuteurs :\n" +tutor.toString() + "\nTutores :\n"+ tutored.toString();
         return res;
     }
 }

@@ -211,18 +211,18 @@ public class Student extends Person implements Comparable<Student> {
      * @param modifier: nombre d'absence de l'etudiant si 1ere annee sinon moyenne de 1ere annee
      * @see Person
      */
-    public Student(String nom, String prenom, String login, String password, double[] moyenne, String annee,String modifier) {   // Le modifier est le nombre d'absence en premiére année, dans les autres promotion c'est la moyenne de la premiére année de l'étudiant
+    public Student(String nom, String prenom, String login, String password, double[] moyenne, String annee,String modifier) {   // Le modifier est le nombre d'absence en premiere annee, dans les autres promotion c'est la moyenne de la premiere année de l'etudiant
         super(nom,prenom,login,password);
         Double add =0.0;
-        if (annee.equals("3")) {                            // Si troisiéme année on augmente artificiellement les moyenne pour prioriser l'affecation de troisiéme année
+        if (annee.equals("3")) {                            // Si troisieme année on augmente artificiellement les moyenne pour prioriser l'affecation de troisieme année
             this.LEVEL = Level.THIRD;
-            add = 10.0+Double.parseDouble(modifier)*0.1;  // J'ajoute en bonus sa moyenne de premiére année. Si il avais des bonnes notes il devrais pouvoir aider plus facilement.                                 
+            add = 10.0+Double.parseDouble(modifier)*0.1;  // J'ajoute en bonus sa moyenne de premiere annee. Si il avais des bonnes notes il devrais pouvoir aider plus facilement.                                 
         } else if (annee.equals("2")) {
             this.LEVEL = Level.SECOND;
             add=+Double.parseDouble(modifier)*0.1;
         } else {
             this.LEVEL = Level.FIRST;
-            add = add + 0.1*Double.parseDouble(modifier);   // Si premiére année on augmente artificiellement la moyenne en fonction des absence/10 pour penaliser les absences
+            add = add + 0.1*Double.parseDouble(modifier);   // Si premiere annee on augmente artificiellement la moyenne en fonction des absence/10 pour penaliser les absences
         }
         this.score = moyenne;
         for (double d : moyenne) {
@@ -247,7 +247,7 @@ public class Student extends Person implements Comparable<Student> {
      * @param modifier: nombre d'absence de l'etudiant si 1ere annee sinon moyenne de 1ere annee
      * @see Person
      */
-    public Student(String nom, String prenom, String password, double[] moyenne, String annee,String modifier) {   // Le modifier est le nombre d'absence en premiére année, dans les autres promotion c'est la moyenne de la premiére année de l'étudiant
+    public Student(String nom, String prenom, String password, double[] moyenne, String annee,String modifier) {   // Le modifier est le nombre d'absence en premiere annee, dans les autres promotion c'est la moyenne de la premiere annee de l'etudiant
         this(nom, prenom, prenom+"."+nom+".etu", password,moyenne,annee, modifier);
     }
 
@@ -265,7 +265,7 @@ public class Student extends Person implements Comparable<Student> {
 
     /**
      * Renvoie l'etudiant sous la forme [Login : prenom.nom.etu ; Score : 0 ; Level = first];
-     * @param subjectID: matiere concernée
+     * @param subjectID: matiere concernee
      */
     public String toString(int subjectId) {
         return "[Login : " + name+"."+lastName+".etu ; Score : " + score[subjectId] + " ; Level = " + LEVEL + "]";
@@ -276,7 +276,7 @@ public class Student extends Person implements Comparable<Student> {
      * Permet de comparer un etudiant a un autre sur plusieurs criteres comme l'annee ou la moyenne
      * @return int: un entier positif si l'etudiant initial est meilleur ou sinon negatif
      */
-    // Il faut au préalable changer la valeur de tmpSub pour pointer sur la bonne matiére avant d'utiliser cette methode, avec Collections.sort() par exemple.
+    // Il faut au prealable changer la valeur de tmpSub pour pointer sur la bonne matiere avant d'utiliser cette methode, avec Collections.sort() par exemple.
     public int compareTo(Student d) { // Nous permet d'utiliser Collections.sort(Arraylist<Student>)
         if(d.LEVEL == Level.FIRST){
             return (int) (this.score[tmpSub] - d.score[tmpSub]);
