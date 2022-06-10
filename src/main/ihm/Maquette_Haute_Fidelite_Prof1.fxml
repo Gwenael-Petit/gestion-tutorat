@@ -54,7 +54,7 @@
          <children>
             <HBox layoutX="11.0" layoutY="43.0" prefHeight="591.0" prefWidth="989.0">
                <children>
-                  <ListView editable="true" orientation="HORIZONTAL" prefHeight="428.0" prefWidth="270.0">
+                  <ListView fx:id="listeleve" editable="true" orientation="VERTICAL" prefHeight="428.0" prefWidth="270.0">
                      <opaqueInsets>
                         <Insets />
                      </opaqueInsets></ListView>
@@ -66,10 +66,10 @@
                            <children>
                               <VBox prefHeight="187.0" prefWidth="159.0">
                                  <children>
-                                    <Label prefHeight="52.0" prefWidth="39.0" text="Nom :" />
-                                    <Label prefHeight="54.0" prefWidth="50.0" text="Année :" />
-                                    <Label prefHeight="48.0" prefWidth="68.0" text="Moyenne :" />
-                                    <Label prefHeight="47.0" prefWidth="78.0" text="Abscences :" />
+                                    <Label fx:id="name" prefHeight="52.0" prefWidth="200.0" text="Nom :" />
+                                    <Label fx:id="year" prefHeight="54.0" prefWidth="200.0" text="Année :" />
+                                    <Label fx:id="score" prefHeight="48.0" prefWidth="200.0" text="Moyenne :" />
+                                    <Label fx:id="miss" prefHeight="47.0" prefWidth="200.0" text="Abscences :" />
                                  </children>
                               </VBox>
                               <ImageView fitHeight="187.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
@@ -85,10 +85,10 @@
                   </VBox>
                </children>
             </HBox>
-            <CheckBox layoutX="47.0" layoutY="14.0" mnemonicParsing="false" text="Sélectionner tout" />
-            <Button layoutX="101.0" layoutY="643.0" mnemonicParsing="false" text="Filtrer" />
-            <Button layoutX="559.0" layoutY="478.0" mnemonicParsing="false" text="Accepter" />
-            <Button layoutX="697.0" layoutY="478.0" mnemonicParsing="false" text="Refuser" />
+            <CheckBox fx:id="FullSelect" layoutX="47.0" layoutY="14.0" mnemonicParsing="false" onAction="#selectAll" text="Sélectionner tout" />
+            <Button fx:id="FilterButton" layoutX="101.0" layoutY="643.0" mnemonicParsing="false" onAction="#toFilters" text="Filtrer" />
+            <Button fx:id="Accept" layoutX="559.0" layoutY="478.0" mnemonicParsing="false" onAction="#toAccept" text="Accepter" />
+            <Button fx:id="Refuse" layoutX="697.0" layoutY="478.0" mnemonicParsing="false" onAction="#toRefuse" text="Refuser" />
             <Button fx:id="NextButton" layoutX="800.0" layoutY="600.0" mnemonicParsing="false" onAction="#next" text="Suivant" />
          </children>
     </AnchorPane>

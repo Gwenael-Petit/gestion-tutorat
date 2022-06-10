@@ -260,7 +260,7 @@ public class Student extends Person implements Comparable<Student> {
             str = str+", "+score[i];
         }
         str = str+" ]";
-        return "[Login : " + name+"."+lastName+".etu ; Score : " + str + " ; Level = " + LEVEL + "]";
+        return /*"[Login : " + */name+"."+lastName+".etu ; Score : " + str + " ; Level = " + LEVEL /* + "]"*/;
     }
 
     /**
