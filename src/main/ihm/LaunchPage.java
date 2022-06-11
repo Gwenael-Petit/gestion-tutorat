@@ -20,17 +20,15 @@ import main.Users.Student;
 
 public class LaunchPage extends Application {
 	
-	@FXML
-	ListView<String> listeleve;
 	public Stage stageA;
-	//public ArrayList<String> list = new ArrayList();
 
 	public void start(Stage stageA) throws IOException {
 		this.stageA = stageA;
 		page();
 		
 	}
-
+	
+	//Permet de charger le fichier fxml et d'afficher la Page
 	public void page() throws IOException {
 		FXMLLoader loader = new FXMLLoader();
 		URL fxmlFileUrl = getClass().getResource("Maquette_Haute_Fidelite_Prof1.fxml");

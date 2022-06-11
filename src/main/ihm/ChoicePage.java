@@ -28,6 +28,7 @@ import javafx.util.Callback;
 import main.Users.Person;
 import main.Users.Student;
 
+//Gère tous les controlleurs de la page permettanr de choisir (Accepter/Refuser) les étudiants
 public class ChoicePage implements Initializable {
 	@FXML
 	Button NextButton;
@@ -53,6 +54,7 @@ public class ChoicePage implements Initializable {
 	double[] note = new double[1];
 	int idx = 0;
 
+	//Permet de passer à la page suivante
 	public void next(ActionEvent event) throws IOException {
 		FXMLLoader loader = new FXMLLoader();
 		URL fxmlFileUrl = getClass().getResource("Maquette_Haute_Fidelite_Affectations.fxml");
@@ -68,6 +70,7 @@ public class ChoicePage implements Initializable {
 		stage.setScene(scene);
 	}
 
+	//Ajoute les étudiant à la ListView
 	public void addToList() {
 		ObservableList<Student> list = FXCollections.observableArrayList();
 		Student a = new Student("Martin", "Martin", "pwd", note, "1", "4");
@@ -81,6 +84,7 @@ public class ChoicePage implements Initializable {
 
 	}
 
+	//Initialise la LisView et affiche les informations de l'étudiant sélectionné
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		addToList();
@@ -89,7 +93,7 @@ public class ChoicePage implements Initializable {
 					@Override
 					public void changed(ObservableValue<? extends Student> observable, Student oldValue,
 							Student newValue) {
-						if (!listeleve.getItems().isEmpty()) {
+						if (!listeleve.getItems().isEmpty() && newValue != null) {
 							name.setText("Nom : ");
 							name.setText(name.getText() + " " + newValue.getName() + " " + newValue.getLastName());
 							year.setText("Année : ");
@@ -108,7 +112,8 @@ public class ChoicePage implements Initializable {
 					}
 				});
 	}
-
+	
+	//Affiche le fenêtre modale des filtres
 	public void toFilters(ActionEvent event) throws IOException {
 		FXMLLoader loader = new FXMLLoader();
 		URL fxmlFileUrl = getClass().getResource("Maquette_Haute_Fidelite_Filtrer.fxml");
@@ -127,27 +132,19 @@ public class ChoicePage implements Initializable {
 		stage.show();
 
 	}
-
+	
+	//Secltionne tous les éléments de la ListtView
 	public void selectAll(ActionEvent event) {
 		if (FullSelect.isSelected()) {
 			listeleve.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
 			listeleve.getSelectionModel().selectAll();
 		} else {
 			listeleve.getSelectionModel().clearSelection();
+			listeleve.getSelectionModel().select(0);
 		}
 	}
 
-	public void selectEtu() {
-		/*
-		 * for(int i = 0; i < listeleve.getItems().size(); i++) {
-		 * if(listeleve.getSelectionModel().getSelectedIndex() == i) {
-		 * name.setText(name.getText()+" Sacha"); } }
-		 */
-		listeleve.getSelectionModel().selectedIndexProperty()
-				.addListener(observable -> name.setText(name.getText() + " Sacha"));
-
-	}
-
+	//Accepte un étudiant et le retire de la liste
 	public void toAccept(ActionEvent event) {
 		if(FullSelect.isSelected()) {
 			listeleve.getItems().clear();
@@ -156,6 +153,7 @@ public class ChoicePage implements Initializable {
 		}
 	}
 
+	//Refuse un étudiant et le retire de la liste
 	public void toRefuse(ActionEvent event) {
 		if(FullSelect.isSelected()) {
 			listeleve.getItems().clear();

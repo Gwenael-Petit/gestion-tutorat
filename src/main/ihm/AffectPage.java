@@ -20,6 +20,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import main.Users.Student;
 
+//Gère tous les controlleurs de la page permettanr d'affecter les couples tuteur/turore
 public class AffectPage implements Initializable{
 	@FXML
     Button TerminerButton;
@@ -50,12 +51,13 @@ public class AffectPage implements Initializable{
 	Couple ac =  new Couple(a,c);
 	Couple bd =  new Couple(b,d);
 	
-
+	//Ferme l'application
 	public void next(ActionEvent event) {
 		Stage stage = (Stage) TerminerButton.getScene().getWindow();
 		stage.close();
 	}
 	
+	//Retour à la page précédente
 	public void back(ActionEvent event) throws IOException {
 		FXMLLoader loader = new FXMLLoader();
 		URL fxmlFileUrl = getClass().getResource("Maquette_Haute_Fidelite_Prof1.fxml");
@@ -72,6 +74,7 @@ public class AffectPage implements Initializable{
 		stage.setScene(scene);
 	}
 	
+	//Ajoute les étudiants aux Listview
 	public void addToList() {
 		ObservableList<Student> list = FXCollections.observableArrayList();
 		list.addAll(a, b, c, d);
@@ -81,6 +84,7 @@ public class AffectPage implements Initializable{
 		}
 	}
 	
+	//Initialise ListView et TableView
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		addToList();
 		affected.addAll(ac, bd);
