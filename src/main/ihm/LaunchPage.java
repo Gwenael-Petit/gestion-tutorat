@@ -23,7 +23,7 @@ public class LaunchPage extends Application {
 	@FXML
 	ListView<String> listeleve;
 	public Stage stageA;
-	public ArrayList<String> list = new ArrayList();
+	//public ArrayList<String> list = new ArrayList();
 
 	public void start(Stage stageA) throws IOException {
 		this.stageA = stageA;

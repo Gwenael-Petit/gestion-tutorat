@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="666.0" prefWidth="944.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.ihm.ClosePage">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="666.0" prefWidth="944.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.ihm.AffectPage">
    <children>
       <TitledPane animated="false" text="Affectations" />
       <AnchorPane prefHeight="640.0" prefWidth="944.0">
@@ -25,7 +25,7 @@
                         <Cursor fx:constant="DEFAULT" />
                      </cursor>
                      <content>
-                        <ListView prefHeight="471.0" prefWidth="185.0" />
+                        <ListView fx:id="list1" editable="true" orientation="VERTICAL" prefHeight="471.0" prefWidth="185.0" />
                      </content>
                   </ScrollPane>
                   <Pane prefHeight="367.0" prefWidth="15.0" />
@@ -34,7 +34,7 @@
                         <Cursor fx:constant="DEFAULT" />
                      </cursor>
                      <content>
-                        <ListView prefHeight="471.0" prefWidth="185.0" />
+                        <ListView fx:id="list23" prefHeight="471.0" prefWidth="185.0" />
                      </content>
                   </ScrollPane>
                </children>
@@ -49,10 +49,10 @@
             <Button layoutX="559.0" layoutY="572.0" mnemonicParsing="false" text="Affecter automatiquement" />
             <Button fx:id="TerminerButton" layoutX="792.0" layoutY="572.0" mnemonicParsing="false" onAction="#next" text="Valider" />
             <Button fx:id="RetourButton" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#back" text="&lt;-" />
-            <TableView layoutX="476.0" layoutY="14.0" prefHeight="532.0" prefWidth="447.0">
+            <TableView fx:id="table" layoutX="476.0" layoutY="14.0" prefHeight="532.0" prefWidth="447.0">
               <columns>
-                <TableColumn prefWidth="222.0" text="Tuteurs" />
-                <TableColumn prefWidth="224.0" text="Tutorés" />
+                <TableColumn fx:id="col1" prefWidth="222.0" text="Tuteurs" />
+                <TableColumn fx:id="col23" prefWidth="224.0" text="Tutorés" />
               </columns>
             </TableView>
          </children>

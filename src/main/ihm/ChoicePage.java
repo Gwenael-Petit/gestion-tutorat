@@ -149,10 +149,18 @@ public class ChoicePage implements Initializable {
 	}
 
 	public void toAccept(ActionEvent event) {
-		listeleve.getItems().remove(idx);
+		if(FullSelect.isSelected()) {
+			listeleve.getItems().clear();
+		}else {
+			listeleve.getItems().remove(idx);
+		}
 	}
 
 	public void toRefuse(ActionEvent event) {
-		listeleve.getItems().remove(idx);
+		if(FullSelect.isSelected()) {
+			listeleve.getItems().clear();
+		}else {
+			listeleve.getItems().remove(idx);
+		}
 	}
 }
