@@ -53,6 +53,8 @@ public class ChoicePage implements Initializable {
 
 	double[] note = new double[1];
 	int idx = 0;
+	
+	public static ObservableList<Student> accepted = FXCollections.observableArrayList();
 
 	//Permet de passer à la page suivante
 	public void next(ActionEvent event) throws IOException {
@@ -147,8 +149,10 @@ public class ChoicePage implements Initializable {
 	//Accepte un étudiant et le retire de la liste
 	public void toAccept(ActionEvent event) {
 		if(FullSelect.isSelected()) {
+			accepted.addAll(listeleve.getItems());
 			listeleve.getItems().clear();
 		}else {
+			accepted.add(listeleve.getItems().get(idx));
 			listeleve.getItems().remove(idx);
 		}
 	}
@@ -157,6 +161,7 @@ public class ChoicePage implements Initializable {
 	public void toRefuse(ActionEvent event) {
 		if(FullSelect.isSelected()) {
 			listeleve.getItems().clear();
+			
 		}else {
 			listeleve.getItems().remove(idx);
 		}

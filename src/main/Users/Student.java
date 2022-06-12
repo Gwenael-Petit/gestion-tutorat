@@ -14,9 +14,9 @@ public class Student extends Person implements Comparable<Student> {
     /**
      * Niveau de la formation en annee
      */
-    private final Level LEVEL;
+    private Level LEVEL;
 
-    /**
+	/**
      * Statut de fication de l'etudiant
      */
     private boolean[] fixed;
@@ -108,6 +108,10 @@ public class Student extends Person implements Comparable<Student> {
     public Level getLevel() {
         return this.LEVEL;
     }
+    
+    public void setLEVEL(Level lEVEL) {
+		LEVEL = lEVEL;
+	}
 
     /**
      * Permet de savoir si un etudiant est fixe (affecte) ou non pour les differentes matieres
@@ -263,7 +267,19 @@ public class Student extends Person implements Comparable<Student> {
         return /*"[Login : " + */name+" "+lastName+" "+/*".etu ; Score : " +*/ str +" "+ /*" ; Level = " + */LEVEL /* + "]"*/;
     }
 
-    /**
+    public Level getLEVEL() {
+		return LEVEL;
+	}
+
+	public void setFixed(boolean[] fixed) {
+		this.fixed = fixed;
+	}
+
+	public void setTmpSub(int tmpSub) {
+		this.tmpSub = tmpSub;
+	}
+
+	/**
      * Renvoie l'etudiant sous la forme [Login : prenom.nom.etu ; Score : 0 ; Level = first];
      * @param subjectID: matiere concernee
      */
