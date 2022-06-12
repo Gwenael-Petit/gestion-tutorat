@@ -153,7 +153,11 @@ public class AffectPage implements Initializable {
 		GrapheNonOrienteValue<Student> graph = Graph.createGraph(tutore, tutor, 0);
 		CalculAffectation<Student> calcul = Graph.compute(tutore, tutor, subjects, 0);
 		for (int i = 0; i < calcul.getAffectation().size(); i++) {
-			calcul.getAffectation().get(i).getExtremite1().setLEVEL(list23.getItems().get(i).getLevel());
+			if(list23.getItems().size() != 0) {
+				calcul.getAffectation().get(i).getExtremite1().setLEVEL(list23.getItems().get(i).getLevel());
+				calcul.getAffectation().get(i).getExtremite1().setScore(list23.getItems().get(i).getScore());
+				calcul.getAffectation().get(i).getExtremite2().setScore(list1.getItems().get(i).getScore());
+			}
 			Couple tmp = new Couple(calcul.getAffectation().get(i).getExtremite1(),
 					calcul.getAffectation().get(i).getExtremite2());
 			affected.add(tmp);

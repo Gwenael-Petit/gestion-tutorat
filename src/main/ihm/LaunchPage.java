@@ -20,10 +20,10 @@ import main.Users.Student;
 
 public class LaunchPage extends Application {
 	
-	public Stage stageA;
+	public static Stage stageA;
 
 	public void start(Stage stageA) throws IOException {
-		this.stageA = stageA;
+		LaunchPage.stageA = stageA;
 		page();
 		
 	}

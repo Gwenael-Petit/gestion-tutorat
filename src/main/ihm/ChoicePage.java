@@ -25,6 +25,7 @@ import javafx.scene.control.SelectionMode;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.util.Callback;
+import main.Users.Level;
 import main.Users.Person;
 import main.Users.Student;
 
@@ -51,8 +52,22 @@ public class ChoicePage implements Initializable {
 	@FXML
 	Button Refuse;
 
-	double[] note = new double[1];
+	double[] notea = new double[]{15.5};
+	double[] noteb = new double[]{18};
+	double[] notec = new double[]{10};
+	double[] noted = new double[]{5};
 	int idx = 0;
+	
+	ObservableList<Student> list = FXCollections.observableArrayList();
+	Student a = new Student("Martin", "Martin", "pwd", notea, "1", "4");
+	Student b = new Student("Dupont", "Jean", "pwd", noteb, "1");
+	Student c = new Student("Dubois", "Pierre", "pwd", notea, "3", "2");
+	Student d = new Student("Boulanger", "Pierre", "pwd", noteb, "3");
+	Student e = new Student("Petit", "Charles", "pwd", notec, "3");
+	Student f = new Student("Leroy", "Lucas", "pwd", noted, "3", "1");
+	Student g = new Student("Dumoulin", "Mateo", "pwd", notec, "1");
+	Student h = new Student("Legrand", "Louis", "pwd", noted, "1");
+	ObservableList<Student> tmp = FXCollections.observableArrayList(a,b,c,d,e,f,g,h);
 	
 	public static ObservableList<Student> accepted = FXCollections.observableArrayList();
 
@@ -74,14 +89,114 @@ public class ChoicePage implements Initializable {
 
 	//Ajoute les étudiant à la ListView
 	public void addToList() {
-		ObservableList<Student> list = FXCollections.observableArrayList();
-		Student a = new Student("Martin", "Martin", "pwd", note, "1", "4");
-		Student b = new Student("Dupont", "Jean", "pwd", note, "1");
-		Student c = new Student("Dubois", "Pierre", "pwd", note, "3", "2");
-		Student d = new Student("là", "l'autre", "pwd", note, "3");
-		list.addAll(a, b, c, d);
-		for (int i = 0; i < list.size(); i++) {
-			listeleve.getItems().add(list.get(i));
+		if(FilterPage.choice == 0) {
+			if(FilterPage.crit == 0) {
+				list.addAll(tmp);
+			}else if(FilterPage.crit == 1) {
+				if(FilterPage.op == 1) {
+					for(int i = 0; i < tmp.size(); i++) {
+						if(tmp.get(i).getScore()[0] > FilterPage.value) {
+							list.add(tmp.get(i));
+						}
+					}
+				}else{
+					for(int i = 0; i < tmp.size(); i++) {
+						if(tmp.get(i).getScore()[0] < FilterPage.value) {
+							list.add(tmp.get(i));
+						}
+					}
+				}
+			}else {
+				if(FilterPage.op == 1) {
+					for(int i = 0; i < tmp.size(); i++) {
+						if(tmp.get(i).getModifier() > FilterPage.value) {
+							list.add(tmp.get(i));
+						}
+					}
+				}else{
+					for(int i = 0; i < tmp.size(); i++) {
+						if(tmp.get(i).getModifier() < FilterPage.value) {
+							list.add(tmp.get(i));
+						}
+					}
+				}
+				
+			}
+			for (int i = 0; i < list.size(); i++) {
+				listeleve.getItems().add(list.get(i));
+			}
+		}else if(FilterPage.choice == 1) {
+			if(FilterPage.crit == 0) {
+				list.addAll(c, d, e, f);
+			}else if(FilterPage.crit == 1) {
+				if(FilterPage.op == 1) {
+					for(int i = 0; i < tmp.size(); i++) {
+						if(tmp.get(i).getScore()[0] > FilterPage.value && tmp.get(i).getLevel() == Level.THIRD) {
+							list.add(tmp.get(i));
+						}
+					}
+				}else{
+					for(int i = 0; i < tmp.size(); i++) {
+						if(tmp.get(i).getScore()[0] < FilterPage.value && tmp.get(i).getLevel() == Level.THIRD) {
+							list.add(tmp.get(i));
+						}
+					}
+				}
+			}else {
+				if(FilterPage.op == 1) {
+					for(int i = 0; i < tmp.size(); i++) {
+						if(tmp.get(i).getModifier() > FilterPage.value && tmp.get(i).getLevel() == Level.THIRD) {
+							list.add(tmp.get(i));
+						}
+					}
+				}else{
+					for(int i = 0; i < tmp.size(); i++) {
+						if(tmp.get(i).getModifier() < FilterPage.value && tmp.get(i).getLevel() == Level.THIRD) {
+							list.add(tmp.get(i));
+						}
+					}
+				}
+				
+			}
+			for (int i = 0; i < list.size(); i++) {
+				listeleve.getItems().add(list.get(i));
+			}
+		}else {
+			if(FilterPage.crit == 0) {
+				list.addAll(a, b, g, h);
+			}else if(FilterPage.crit == 1) {
+				if(FilterPage.op == 1) {
+					for(int i = 0; i < tmp.size(); i++) {
+						if(tmp.get(i).getScore()[0] > FilterPage.value && tmp.get(i).getLevel() == Level.FIRST) {
+							list.add(tmp.get(i));
+						}
+					}
+				}else{
+					for(int i = 0; i < tmp.size(); i++) {
+						if(tmp.get(i).getScore()[0] < FilterPage.value && tmp.get(i).getLevel() == Level.FIRST) {
+							list.add(tmp.get(i));
+						}
+					}
+				}
+			}else {
+				if(FilterPage.op == 1) {
+					for(int i = 0; i < tmp.size(); i++) {
+						if(tmp.get(i).getModifier() > FilterPage.value && tmp.get(i).getLevel() == Level.FIRST) {
+							list.add(tmp.get(i));
+						}
+					}
+				}else{
+					for(int i = 0; i < tmp.size(); i++) {
+						if(tmp.get(i).getModifier() < FilterPage.value && tmp.get(i).getLevel() == Level.FIRST) {
+							list.add(tmp.get(i));
+						}
+					}
+				}
+				
+			}
+			for (int i = 0; i < list.size(); i++) {
+				listeleve.getItems().add(list.get(i));
+			}
 		}
 
 	}
@@ -154,6 +269,7 @@ public class ChoicePage implements Initializable {
 		}else {
 			accepted.add(listeleve.getItems().get(idx));
 			listeleve.getItems().remove(idx);
+			list.remove(idx);
 		}
 	}
 

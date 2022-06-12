@@ -44,7 +44,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="470.0" prefWidth="631.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="470.0" prefWidth="631.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.ihm.FilterPage">
    <children>
       <TitledPane animated="false" prefHeight="22.0" prefWidth="600.0" text="Filtrer">
         <content>
@@ -58,10 +58,11 @@
                   <HBox prefHeight="43.0" prefWidth="361.0">
                      <children>
                         <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="32.0" prefWidth="178.0" text="Eleve : " HBox.hgrow="ALWAYS" />
-                        <SplitMenuButton mnemonicParsing="false" prefHeight="36.0" prefWidth="197.0" text="Sélectionner niveau" textAlignment="JUSTIFY">
+                        <SplitMenuButton fx:id="studentChoice" mnemonicParsing="false" prefHeight="36.0" prefWidth="197.0" text="Sélectionner niveau" textAlignment="JUSTIFY">
                            <items>
-                              <MenuItem mnemonicParsing="false" text="Action 1" />
-                              <MenuItem mnemonicParsing="false" text="Action 2" />
+                              <MenuItem fx:id="tuteurs" mnemonicParsing="false" onAction="#tuteurChoice" text="Tuteurs" />
+                              <MenuItem fx:id="tutores" mnemonicParsing="false" onAction="#tutoreChoice" text="Tutores" />
+                              <MenuItem fx:id="all" mnemonicParsing="false" onAction="#allChoice" text="Tous" />
                            </items>
                         </SplitMenuButton>
                      </children>
@@ -70,10 +71,11 @@
                   <HBox prefHeight="45.0" prefWidth="361.0">
                      <children>
                         <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="35.0" prefWidth="171.0" text="Critère :" HBox.hgrow="ALWAYS" />
-                        <SplitMenuButton mnemonicParsing="false" prefHeight="36.0" prefWidth="197.0" text="Sélectionner critère">
+                        <SplitMenuButton fx:id="critChoice" mnemonicParsing="false" prefHeight="36.0" prefWidth="197.0" text="Sélectionner critère">
                           <items>
-                            <MenuItem mnemonicParsing="false" text="Action 1" />
-                            <MenuItem mnemonicParsing="false" text="Action 2" />
+                            <MenuItem fx:id="moyenne" mnemonicParsing="false" onAction="#moyChoice" text="Moyenne" />
+                            <MenuItem fx:id="absences" mnemonicParsing="false" onAction="#absChoice" text="Absences" />
+                            <MenuItem fx:id="aucun" mnemonicParsing="false" onAction="#noChoice" text="Aucun" />
                           </items>
                         </SplitMenuButton>
                      </children>
@@ -82,10 +84,10 @@
                   <HBox prefHeight="36.0" prefWidth="360.0">
                      <children>
                         <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="39.0" prefWidth="161.0" text="Opération :" />
-                        <SplitMenuButton mnemonicParsing="false" prefHeight="36.0" prefWidth="197.0" text="Sélectionner opération">
+                        <SplitMenuButton fx:id="opChoice" mnemonicParsing="false" prefHeight="36.0" prefWidth="197.0" text="Sélectionner opération">
                            <items>
-                              <MenuItem mnemonicParsing="false" text="Action 1" />
-                              <MenuItem mnemonicParsing="false" text="Action 2" />
+                              <MenuItem fx:id="sup" mnemonicParsing="false" onAction="#supChoice" text="superieur" />
+                              <MenuItem fx:id="inf" mnemonicParsing="false" onAction="#infChoice" text="inferieur" />
                            </items>
                         </SplitMenuButton>
                      </children>
@@ -94,7 +96,7 @@
                   <HBox prefHeight="39.0" prefWidth="361.0">
                      <children>
                         <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="39.0" prefWidth="178.0" text="Valeur :" />
-                        <Slider max="20.0" prefHeight="26.0" prefWidth="198.0" showTickLabels="true" value="10.0" />
+                        <Slider fx:id="slide" max="20.0" prefHeight="26.0" prefWidth="198.0" showTickLabels="true" value="10.0" />
                      </children>
                   </HBox>
                   <BorderPane prefHeight="74.0" prefWidth="361.0">
@@ -107,7 +109,7 @@
                      <bottom>
                         <Pane prefHeight="30.0" prefWidth="360.0" BorderPane.alignment="CENTER">
                            <children>
-                              <Button layoutX="149.0" layoutY="3.0" mnemonicParsing="false" text="Valider" />
+                              <Button fx:id="validButton" layoutX="149.0" layoutY="3.0" mnemonicParsing="false" onAction="#valid" text="Valider" />
                            </children></Pane>
                      </bottom>
                   </BorderPane>
